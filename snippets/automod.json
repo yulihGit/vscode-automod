@@ -1,0 +1,3313 @@
+{
+  "source.automod": {
+
+    "title_section_description_comment": {
+      "prefix": "§comment_title_section",
+      "body": [
+          "/*****************************************************************************************************************",
+          " // Descriptions:\t${2:todo}",
+          " // Parameters:\t\t${3:todo}",
+          " // Example:\t\t${4:todo}",
+          " *****************************************************************************************************************/"],
+          "description": "Descriptions: 'Describe main concepts'\nParameters: 'Clarify ambigous parameters\nExample: 'input->output example'"
+    },
+    "line_block_comment": {
+      "prefix": "§comment_line_block",
+      "body": "/* $1 */",
+      "description": "AutoMod block commenting"
+    },
+    "block_comment": {
+      "prefix": "comment_block",
+      "body": "/** \n * $1\n*/"
+    },
+    "todo_comment": {
+      "prefix": "/todo",
+      "body": "// ToDo "
+    },
+    "print_to_message": {
+      "prefix": "§print \"\" to message",
+      "body": "print \"${1:print_text}\" to message"    
+    },
+    "print_debugging": {
+      "prefix": "§debug_pausecontinue_or_togglestop",
+      "body": [   
+          "if ${1:<condition = true>} then begin",
+          " print ${1:<condition>} to message",
+          " call pausecontinue()",
+          " \/\/print \"toggle stop here\" \/\/ uncomment this line and comment pausecontinue",
+          "end"],
+      "description": "Snippet for pausecontinue or toggle stop in debugger'"          
+    },
+
+    "command_amod_optimized_windowless": {
+      "prefix": "§command_optimized_windowless \"\"",
+      "body": "amod -iOnr ${1:runtime_model_name} -w",
+      "description": "Note: Folder directory should be where runtime model is located.\nTip: Have <model>.message and <model>.err files open on side"      
+    },
+    "command_amod_windowless": {
+      "prefix": "§command_windowless \"\"",
+      "body": "amod -ir ${1:runtime_model_name} -w",
+      "description": "Note: Folder directory should be where runtime model is located.\nTip: Have <model>.message and <model>.err files open on side"      
+    },
+    
+    "attribute_integer_from_selection": {
+      "prefix": "§cai (create_attribue_integer_from_selection)",
+      "body": "$TM_SELECTED_TEXT${1:ATT name $TM_SELECTED_TEXT 0 type Integer}"
+    },
+    "attribute_string_from_selection": {
+      "prefix": "§cas (create_attribute_string_from_selection)",
+      "body": "$TM_SELECTED_TEXT${1:ATT name $TM_SELECTED_TEXT 0 type String}"
+    },
+    "variable_integer_from_selection": {
+      "prefix": "§cvi (create_variable_integer_from_selection)",
+      "body": "$TM_SELECTED_TEXT${1:VAR name $TM_SELECTED_TEXT 0 type Integer}"
+    },
+    "variable_string_from_selection": {
+      "prefix": "§cvs (create_variable_string_from_selection)",
+      "body": "$TM_SELECTED_TEXT${1:VAR name $TM_SELECTED_TEXT 0 type String}"
+    },
+    
+
+    "declare_string": {
+      "prefix": "§declare_String",
+      "body": "VAR name VS_${1:<Name>} 0 type String"
+    },
+    "declare_integer": {
+      "prefix": "§declare_Integer",
+      "body": "VAR name VI_${1:<Name>} 0 type Integer"
+    },
+    "declare_function_integer": {
+      "prefix": "§declare_Function_Integer",
+      "body": "FUNC name ${1:<F_Name>} type Integer PARAM name ${2:<ArgInt_Parameter>} type Integer"
+    },
+    "declare_procedure": {
+      "prefix": "§begin_procedure",
+      "body": [
+          "PROC name ${1:<P_VerbNoun>} 0 traf Infinite ${2:nextproc die} ",
+          "/*****************************************************************************************************************",
+          " * Descriptions:",
+          "  * Public variables/attributes (static)",
+          "     - ",
+          "  * Private variables/attributes",
+          "     - ",
+          "  * Inherited variables/attributes",
+          "     - ",
+          "  * Subroutines",
+          "     - ",
+          " *****************************************************************************************************************/",
+          "begin ${1:<P_VerbNoun>} arriving procedure \n\t${3}\nend"],
+          "description": []
+    },
+    "declare_subroutine": {
+      "prefix": "§begin_subroutine",
+      "body": [   
+          "SUBRTN name ${1:<S_VerbNoun>}",
+          "/*****************************************************************************************************************",
+          " * Descriptions:",
+          "  * Public variables/attributes (static)",
+          "     - ",
+          "  * Private variables/attributes",
+          "     - ",
+          "  * Inherited variables/attributes",
+          "     - ",
+          " *****************************************************************************************************************/",
+          "begin ${1:<S_VerbNoun>} \n\t${2}\nend"],
+          "description": []
+    },
+    "declare_function": {
+      "prefix": "§begin_function",
+      "body": [   
+          "FUNC name ${1:<F_VerbNoun>} type Integer PARAM name ${2:<ArgInt_Parameter>} type Integer",
+          "/*****************************************************************************************************************",
+          " * Descriptions:",
+          "  * Private variables/attributes",
+          "     - ",
+          "  * Parameters",
+          "     - ",
+          "",
+          " * Example:",
+          " *****************************************************************************************************************/",
+          "begin ${1:<F_VerbNoun>} function\n\t${3}\r\treturn 0\nend"],
+          "description": ["Descriptions: 'Describe main concepts'\n",
+            "Parameters: 'Clarify ambigous parameters\nExample: 'input->output example'\nnextproc die = optional?"]         
+    },
+    "declare_function_example": {
+      "prefix": "§begin_function_example",
+      "body": [   
+          "FUNC name Fi_CalcTime type Integer PARAM name ArgReal_Time type Real",
+          "/*****************************************************************************************************************",
+          " * Descriptions: Excel format conversion 0.284(General) -> 650(Digital)",
+					"                 (06:50:00 AM is 0.2847222 in General format in Excel)",
+          "  * Private variables/attributes",
+          "      - Vi_paramSec",
+          "      - Vi_paramMin",
+          "      - Vi_paramHour",
+          "  * Parameters: ",
+          "      - ArgReal_Time: 0-1 (excel time in general format)",
+          "",
+          " * Example:    Fi_CalcTime(0.2847222) = 650",
+          "              1. 0.2847222 * 24*60*60 = 24600",
+          "              2. check for integer division",
+          "              3. 410 = 24600/60 (minutes)",
+          "              4. 6 (6.8333) = 410 / 60 (hour)",
+          "              5. 50 = 410 - 6 * 60 = 410 - 360",
+          "              6. 650",
+          " *****************************************************************************************************************/",
+          "begin Fi_CalcTime function ",
+          "  set Vi_paramSec = ArgReal_Time * 24*60*60",	
+          "  if ((Vi_paramSec % 60) <> 0)",
+          "    then inc Vi_paramSec by (60 - (Vi_paramSec % 60.0))" ,
+          "  set Vi_paramMin = Vi_paramSec / 60",
+          "  set Vi_paramHour = Vi_paramMin / 60",
+          "  set Vi_paramMin = Vi_paramMin - Vi_paramHour * 60",
+          "  return Vi_paramHour*100 + Vi_paramMin",
+          "end"],
+          "description": ["Function example. Values filled"]         
+    },
+    "declare_procedure_example": {
+      "prefix": "§begin_procedure_example",
+      "body": [
+              "PROC name P_LoadPallet 0 traf Infinite nextproc die ",
+              "/*****************************************************************************************************************",
+              "  * Descriptions: Calculates volume of incoming loaded pallet",
+              "                  Inserts it at an available space of trailer.",
+              "  * Public variables/attributes  (static)",
+              "      - Vi_Container",
+              "      - Vi_Pallet",
+              "  * Private variables/attributes",
+              "      - Ai_PalletLoadFitsContainer",
+              "      - Vi_SectionSpaceAvailable",
+              "      - Vi_palletVolume",
+              "  * Inherited variables/attributes",
+              "      - Ai_palletHeight",
+              "      - Ai_palletWeight",
+              "      - Ai_palletLength",
+              "  * Subroutines/attributes",
+              "      - S_UseTruck",
+              "      - S_FinishLoading",
+              "  *****************************************************************************************************************/",
+              "begin P_LoadPallet arriving procedure",
+              "    move into Q_PalletLoading",
+              "    set Vi_palletVolume = Ai_palletHeight*Ai_palletWeight*Ai_palletLength",
+              "    for each Vi_SectionSpaceAvailable in Vi_Container do begin",
+              "        if Vi_palletVolume <= Vi_SectionSpaceAvailable then begin",
+              "            call subroutine S_UseTruck",
+              "            set Vi_index = Vi_Pallet",
+              "            call subroutine S_FinishLoading",
+              "            set Ai_PalletLoadFitsContainer = true",
+              "            break",
+              "        end",
+              "    end",
+              "    if Ai_PalletLoadFitsContainer = false then begin",
+              "        print this load \" doesn't fit main container. Moved to warehouse. \" to Label_Loading",
+              "        move into Q_Warehouse",
+              "    end",
+              "    send to die",
+              "end"],
+          "description": ["Procedure Example. Values filled. See also Subroutine examples"]         
+    },
+    "declare_subroutine_example": {
+      "prefix": "§begin_subroutine_example",
+      "body": [   
+              "SUBRTN name S_UseTruck",
+              "/***********************************************************************",
+              "  * Descriptions: Use truck for uniformly distributed amount of time",
+              "                  (5 and 15 min).",
+              "                  Remove volume for chosen section of main container",
+              "                  Prints loading message",
+              "  * Public variables",
+              "      - ",
+              "  * Private variables",
+              "      - ",
+              "  * Inherited variables",
+              "      - Vi_SectionSpaceAvailable",
+              "      - Vi_palletVolume",
+              "  ***********************************************************************/",
+              "begin S_UseTruck",
+              "    move into Q_Trailer",
+              "    print this load \" has started loading... \" to Label_Loading",
+              "    dec Vi_SectionSpaceAvailable by Vi_palletVolume",
+              "    use R_Truck uniform 10, 5 min",
+              "end",
+              "",
+              "SUBRTN name S_FinishLoading",
+              "/***********************************************************************",
+              "  * Descriptions: Increment loadings by 1 for specific carrier type",
+              "                  Prints finish message",
+              "  * Public variables",	 
+              "      - Vi_loadingCnts",
+              "  * Private variables",
+              "      - Vi_loadingCnt",
+              "  * Inherited variables",
+              "      - Vi_index",
+              "  ***********************************************************************/",
+              "begin S_FinishLoading",
+              "    inc Vi_loadingCnts(Vi_index) by 1",
+              "    print this load \" has finished loading. \" to Label_Loading",
+              "end"],
+          "description": ["Subroutine 2 examples. Values filled. See also Procedure example"]         
+    },
+
+    "breakdown_example_triangular": {
+      "prefix": "§breakdown_triangular",
+      "body": [   
+        "begin ${1:<P_break>} arriving procedure",
+        " move into ${2:<Q_break>}",
+        " while 1=1 do begin",
+        "   wait for rn V_Stream exponential ${3:<V_MTBF>} hr",
+        "   take down ${4:<R_machine>}(procindex)",
+        "   print \"Machine \", procindex, \"out of order\" to ${5:<Label_break>}",
+        "   wait for rn V_Stream triangular ${6:<L>}, ${7:<D>}, ${8:<U>} min",
+        "   print \"  \" to ${5:<Label_break>}   // Reset label",
+        "   bring up ${4:<R_machine>}(procindex)",
+        " end",
+        "end"],
+      "description": "Comments:\n - L: min (lower) value\n - D: most likely value\n - U: max (upper) value"          
+    },
+    "breakdown_example_resource": {
+      "prefix": "§breakdown_resource",
+      "body": [   
+        "begin ${1:<P_breakdown>} arriving",
+        " wait for ${2:<5>} min       \/\/ start in 5min",
+        " while 1=1 do begin",
+        "  take down ${3:<R_machine>}",
+        "  move into ${4:<Q_machine>}",
+        "  wait for ${5:<15>} min     \/\/ MTTR",
+        "  bring up ${3:<R_machine>}",
+        "  wait for ${6:<7.75>} hr    \/\/ MTTF",
+        " end",
+        "end"],
+      "description": []          
+    },
+
+    "new_model":{
+      "prefix": "§new_model",
+      "body": [   
+            "VERSION 12.6.1.19",
+            "SYSTYPE Process",
+            "UNITS Feet Seconds",
+            "SYSDEF UtilByAvail off RefCheck on debugger off warningMessages on report standard",
+            "FLAGS",
+            "    System Inherit",
+            "    Text Inherit",
+            "    Resources Inherit",
+            "    Resource Names Inherit",
+            "    Queues Inherit",
+            "    Queue Names Inherit",
+            "    Queue Amounts Inherit",
+            "    Blocks Inherit",
+            "    Block Names Inherit",
+            "    Labels Inherit",
+            "PROCDEF",
+            "TYPE name IntList TYPEtype list Integer",
+            "    CTYPE \"AM_IntList*\"",
+            "    TYPE2STRING \"AM_IntListToStr\"",
+            "PROC name P_Init 0 traf Infinite",
+            "PROC name P_Creation 0 traf Infinite",
+            "PROC name P_Read 0 traf Infinite",
+            "PROC name P_BreakDown 0 traf Infinite",
+            "PROC name P_Schedule 0 traf Infinite",
+            "PROC name P_Write 0 traf Infinite",
+            "LDTYPE name L_Init 0",
+            "picpos endx 1",
+            " template Meters",
+            "700 17",
+            "2 2 0 1 1 none",
+            "1",
+            "310 0",
+            "1 1 1 1 1 0 0",
+            "end",
+            "        create con 0 Seconds stream stream_L_Init_1 First P_Init 0 Limit 1",
+            "LDTYPE name L_Read 0",
+            "picpos endx 1",
+            " template Meters",
+            "700 17",
+            "2 2 0 1 1 none",
+            "1",
+            "310 0",
+            "1 1 1 1 1 0 0",
+            "end",
+            "LDTYPE name L_Creation 0",
+            "picpos endx 1",
+            " template Meters",
+            "700 17",
+            "2 2 0 1 1 none",
+            "1",
+            "310 0",
+            "1 1 1 1 1 0 0",
+            "end",
+            "ATT name AI_Temp 1 10 type Integer",
+            "ATT name AR_Temp 1 10 type Real",
+            "ATT name AS_Temp 1 10 type String",
+            "ATT name ALPtr_Temp 1 10 type LoadPtr",
+            "ATT name AVehPtr_Temp 1 10 type VehiclePtr",
+            "ATT name ALoc_Temp 1 10 type Location",
+            "VAR name UI_VFileOffsetPtr 0 type FilePtr",
+            "VAR name UI_VI_Offset 0 type Integer",
+            "VAR name UI_i 0 type Integer",
+            "VAR name UI_Dummy 0 type Integer",
+            "VAR name UI_VFileRunedonePtr 0 type FilePtr",
+            "VAR name V_FilePtrIn 0 type FilePtr",
+            "VAR name VI_Row 0 type Integer",
+            "VAR name VI_Column 0 type Integer",
+            "VAR name VI_NumberOfColumns 0 type Integer",
+            "VAR name VI_Hour 0 type Integer",
+            "VAR name VI_Day 0 type Integer",
+            "VAR name VI_Week 0 type Integer",
+            "VAR name VI_Temp 1 10 type Integer",
+            "VAR name VR_Temp 1 10 type Real",
+            "VAR name VS_Temp 1 10 type String",
+            "VAR name VLPtr_Temp 1 10 type LoadPtr",
+            "VAR name VVehPtr_Temp 1 10 type VehiclePtr",
+            "VAR name VLoc_Temp 1 10 type Location",
+            "RNSTREAM stream0 0 type CMRG flags 1",
+            "    cmrgseed 1 12345 12345 12345 12345 12345 12345",
+            "RNSTREAM stream_L_Init_1 0 type CMRG flags 1",
+            "    title \"Generated automatically for L_Init\"",
+            "    cmrgseed 1 3692455944 1366884236 2968912127 335948734 4161675175 475798818",
+            "RNSTATE 1015873554 1310354410 2249465273 994084013 2912484720 3876682925",
+            "FUNC name pausecontinue type Integer",
+            "FUNC name F_Distribution type Real PARAM name Arg_Distrubution type String PARAM name Arg_Parameter1 type Real PARAM name Arg_Parameter2 type Real PARAM name Arg_Parameter3 type Real",
+            "FUNC name F_Time type Time PARAM name Arg_Time type String PARAM name Arg_Parameter type Real",
+            "SFileBegin    name Interface.m",
+            "begin model initialization function",
+            "//--------------User interface - Random seed manipulator---------------//",
+            "    open \"offset.txt\" for reading save result as UI_VFileOffsetPtr",
+            "    read UI_VI_Offset from UI_VFileOffsetPtr",
+            "    set UI_VI_Offset = UI_VI_Offset * 10000",
+            "    set UI_i=0",
+            "    while UI_i<UI_VI_Offset do begin",
+            "        set UI_Dummy = normal 5, 1",
+            "        inc UI_i by 1",
+            "    end ",
+            "    return 0",
+            "//---------------------------------------------------------------------//",
+            "end",
+            "",
+            "",
+            "#@!",
+            "SFileBegin    name Creation.m",
+            "// Creation.m ",
+            "",
+            "// Retrive its load from P_Inint",
+            "// Create loads to the model.",
+            "",
+            "begin P_Creation arriving procedure",
+            "",
+            "",
+            "",
+            "",
+            "end",
+            "",
+            "#@!",
+            "SFileBegin    name Init.m",
+            "// Init.m //",
+            "",
+            "// Declaring and seting init values and capacity on varibales, queues, resources, counter",
+            "// Init is the second procuedre in the model and is executed directly after P_Read",
+            "// The next procedure is P_Creation in Creation.m",
+            "begin P_Init arriving procedure",
+            "",
+            "    /*Open links to output textfiles:*/",
+            "    //Example: open \"Output/Output_Dummy.txt\" for writing save result as VFPtr_OutputDummy",
+            "    ",
+            "    /*Set init parameters for conveyors, pathmovers, AS/RS and Power & Free systems*/",
+            "    ",
+            "    /*Set init value for varibles:*/",
+            "    set VI_Hour = 1",
+            "    set VI_Day = 1",
+            "    set VI_Week = 1",
+            "    ",
+            "    /*Set init capacity for queues:*/",
+            "",
+            "    /*Set init capacity or/and value for counters:*/",
+            "    ",
+            "    /*set init states, capacity for resources:*/",
+            "    ",
+            "    /*Set init text for labels:*/",
+            "    ",
+            "    /*Set init value for attributes:*/",
+            "    ",
+            "    // OBS! Cloning loads inheriting all attributes",
+            "    /*Clone loads to supervisors:*/",
+            "    ",
+            "    //Clone main load to creation process",
+            "    clone 1 load to P_Creation new load type L_Creation",
+            "end",
+            "",
+            "#@!",
+            "SFileBegin    name Read.m",
+            "// Read.m //",
+            "",
+            "// Reading data from the User Interface located in the main model folder",
+            "// Read procedure is the first thing that happends in the model",
+            "// The next procedure is P_Init in Init.m",
+            "begin P_Read arriving ",
+            "",
+            "    /*Read data from textfiles*/",
+            "    ",
+            "    // Example 1:",
+            "    //1. Name your textfile",
+            "    open \"Input/dummy.txt\" for reading save result as V_FilePtrIn // V_FilePtrIn is a predefined varible for reading data from the UI",
+            "    ",
+            "    // 2. Set size of the matrix",
+            "    //set VI_NumberOfColumns = ?? ",
+            "    ",
+            "    // Reading a matix XRows*YColumn",
+            "    set VI_Row = 0",
+            "    while V_FilePtrIn eof = false do",
+            "    begin",
+            "        inc VI_Row by 1 //Point at next row",
+            "        set VI_Column = 0 // Variable that pointing at current column",
+            "        while VI_Column < VI_NumberOfColumns do",
+            "        begin",
+            "            inc VI_Column by 1 //Point at next column",
+            "            // 3. Read to your variable: read variable(VI_Row,VI_Column) from V_FilePtrIn",
+            "        end",
+            "    end",
+            "    //End of Example 1",
+            "",
+            "",
+            "",
+            "    // Example 2:",
+            "    //1. Name your textfile",
+            "    open \"Input/dummy.txt\" for reading save result as V_FilePtrIn // V_FilePtrIn is a predefined varible for reading data from the UI",
+            "    ",
+            "    // Reading a matix XRows*YColumn",
+            "    set VI_Row = 0",
+            "    while V_FilePtrIn eof = false do",
+            "    begin",
+            "        inc VI_Row by 1 //Point at next row",
+            "        //Read whole row",
+            "        // 2. Read to your variable: read variable1(VI_Row), variable2(VI_Row), variable3(VI_Row) ... number of column from V_FilePtrIn with delimiter \"\t\"",
+            "    end",
+            "    //End of Example 2",
+            "    ",
+            "    ",
+            "    /*Reading done*/",
+            "    close V_FilePtrIn",
+            "    set V_FilePtrIn to null",
+            "    create 1 load of load type L_Init to P_Init",
+            "end",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "#@!",
+            "SFileBegin    name Write.m",
+            "// Write.m //",
+            "",
+            "// Writing outputs to .txtfiles",
+            "",
+            "// P_Write - Writing for all finished products. OBS! Need to send loads that should be written to this process",
+            "// Snap function - Wrining to txt files every snap OBS! Need to set up a run control whith snap",
+            "// Finished function - Wrining to txt files when simulation terminates",
+            "",
+            "",
+            "// P_Write prints load attributes to a textfile",
+            "begin P_Write arriving",
+            "",
+            "    //Example:",
+            "    //print Attribute1, \"\t\", Attribute2, \"\t\", Attribute3 to VFPtr_Dummy",
+            "",
+            "end",
+            "",
+            "// Snap function prints variables and states every snap",
+            "// OBS! This snap function is set to snap every hour!",
+            "begin model snap function",
+            "    ",
+            "    /*Print Output*/",
+            "    ",
+            "    // Example hour: ",
+            "    //print OutputType1 \"\t\" OutputType2 \"\t\" OutputType3 to VFPtr_OutputHour",
+            "    ",
+            "    // Example day:",
+            "    if VI_Hour = 24 then begin",
+            "        //print OutputType1 \"\t\" OutputType2 \"\t\" OutputType3 to VFPtr_OutputDay",
+            "    end",
+            "    ",
+            "    // Example week:",
+            "    if VI_Day = 7 then begin",
+            "        //print OutputType1 \"\t\" OutputType2 \"\t\" OutputType3 to VFPtr_OutputWeek",
+            "    end",
+            "    ",
+            "    /*Print States*/",
+            "    ",
+            "/*    Example two states:",
+            "    print Resource1 state S_Work relative average \"\t\" Resource1 state S_Idle relative average \"\t\" no line to VFPtr_Resources_Output",
+            "    print Resource2 state S_Work relative average \"\t\" Resource2 state S_Idle relative average to VFPtr_Resources_Output",
+            "*/    ",
+            "/*    Example three states:",
+            "    print Resource1 state S_Work relative average \"\t\" Resource1 state S_Idle relative average \"\t\" Resource1 state S_Blocked relative average \"\t\" no line to VFPtr_Resources_Output",
+            "    print Resource2 state S_Work relative average \"\t\" Resource2 state S_Idle relative average \"\t\" Resource2 state S_Blocked relative average to VFPtr_Resources_Output",
+            "*/",
+            "/*    Example four states:",
+            "    print Resource1 state S_Work relative average \"\t\" Resource1 state S_Idle relative average \"\t\" Resource1 state S_Blocked relative average \"\t\" Resource1 state S_BreakDown relative average \"\t\" no line to VFPtr_Resources_Output",
+            "    print Resource2 state S_Work relative average \"\t\" Resource2 state S_Idle relative average \"\t\" Resource2 state S_Blocked relative average \"\t\" Resource2 state S_BreakDown relative average to VFPtr_Resources_Output",
+            "*/",
+            "/*    Example five states:",
+            "    print Resource1 state S_Work relative average \"\t\" Resource1 state S_Idle relative average \"\t\" Resource1 state S_Blocked relative average \"\t\" Resource1 state S_BreakDown relative average \"\t\" Resource1 state S_NotAvailable relative average \"\t\" no line to VFPtr_Resources_Output",
+            "    print Resource2 state S_Work relative average \"\t\" Resource2 state S_Idle relative average \"\t\" Resource2 state S_Blocked relative average \"\t\" Resource2 state S_BreakDown relative average \"\t\" Resource2 state S_NotAvailable relative average to VFPtr_Resources_Output",
+            "*/",
+            "",
+            "    /*Uppdate time variables and reset variables*/",
+            "    ",
+            "    // Variable pointing at the hour, day and week (1 as init value)",
+            "    // Used to snap at diffrent times",
+            "    inc VI_Hour by 1",
+            "",
+            "    //Reset variables every day here",
+            "    ",
+            "    if VI_Hour = 25 then",
+            "    begin",
+            "        inc VI_Day by 1",
+            "        set VI_Hour = 1 ",
+            "        ",
+            "        //Reset variables every day here",
+            "    end",
+            "    ",
+            "    if VI_Day = 8 then ",
+            "    begin ",
+            "        inc VI_Week by 1",
+            "        set VI_Day = 1",
+            "        ",
+            "        //Reset variables every week here",
+            "    end",
+            "    return 0",
+            "end",
+            "",
+            "",
+            "// Finished function prints variables and states when model terminates",
+            "begin model finished function",
+            "",
+            "    /*Print Output */",
+            "    //Example: print VR_Total(1) \"\t\" VR_Total(2) \"\t\" VR_Total(1)+VR_Total(2) to VFPtr_Output",
+            "    ",
+            "    /*Close all Output textfiles*/",
+            "    //Example: close VFPtr_Output",
+            "    ",
+            "//---------------------UI Communication File-------------------//",
+            "    open \"rundone.txt\" for writing save result as UI_VFileRunedonePtr",
+            "//-------------------------------------------------------------//",
+            "    return 0",
+            "end",
+            "",
+            "",
+            "#@!",
+            "SFileBegin    name Functions.m",
+            "//F_Distribution",
+            "//Argumet1 Arg_Distrubution: Distribution type",
+            "//Argumet2 Arg_Parameter1: Parameter 1",
+            "//Argumet3 Arg_Parameter2: Parameter 2",
+            "//Argumet4 Arg_Parameter3: Parameter 3",
+            "//Function that returns a random time for the given Distribution and parameters",
+            "begin F_Distribution",
+            "    if Arg_Distrubution = \"Triangular\" or Arg_Distrubution = \"triangular\" then begin",
+            "        return    triangular Arg_Parameter1, Arg_Parameter2, Arg_Parameter3    ",
+            "    end",
+            "    else if Arg_Distrubution = \"Lognormal\" or Arg_Distrubution = \"lognormal\" then begin",
+            "        return Arg_Parameter3 + lognormal Arg_Parameter1, Arg_Parameter2",
+            "    end",
+            "    else if Arg_Distrubution = \"Normal\" or Arg_Distrubution = \"normal\" then begin",
+            "        return Arg_Parameter3 + normal Arg_Parameter1, Arg_Parameter2 ",
+            "    end",
+            "    else if Arg_Distrubution = \"Weibull\" or Arg_Distrubution = \"weibull\" then begin",
+            "        return Arg_Parameter3 + weibull Arg_Parameter1, Arg_Parameter2",
+            "    end",
+            "    else if Arg_Distrubution = \"Uniform\" or Arg_Distrubution = \"uniform\" then begin",
+            "        return uniform Arg_Parameter1,Arg_Parameter2",
+            "    end",
+            "    else if Arg_Distrubution = \"Gamma\" or Arg_Distrubution = \"gamma\" then begin",
+            "        return Arg_Parameter3 + gamma Arg_Parameter1, Arg_Parameter2     ",
+            "    end",
+            "    else if Arg_Distrubution = \"Constant\" or Arg_Distrubution = \"constant\" then begin",
+            "        return Arg_Parameter1    ",
+            "    end",
+            "    else begin",
+            "        print \"Function \" Arg_Distrubution  \" not found!\" to message",
+            "        call pausecontinue()",
+            "        return 0",
+            "    end",
+            "end",
+            "",
+            "/* Todo skapoa en funktion som retunerar tid baserat p§ ett v§rde(real) och enhet(string)",
+            " if \"minuter\" ",
+            "     then return realVariable min*/",
+            "",
+            "//F_Time",
+            "//Argumet1 Arg_Time: Time unit (String)",
+            "//Argumet2 Arg_Parameter: Parameter (Real)",
+            "//Retuns Time",
+            "begin F_Time",
+            "    if Arg_Time = \"s\" or Arg_Time = \"sec\" then begin",
+            "        return Arg_Parameter sec    ",
+            "    end",
+            "    else if Arg_Time = \"min\" then begin",
+            "        return Arg_Parameter min",
+            "    end",
+            "    else if Arg_Time = \"h\" or Arg_Time = \"hr\" then begin",
+            "        return Arg_Parameter hr",
+            "    end",
+            "    else if Arg_Time = \"dag\" or Arg_Time = \"day\" then begin",
+            "        return Arg_Parameter day",
+            "    end",
+            "    else begin",
+            "        print \"Function \" Arg_Time \" not found!\" to message",
+            "        call pausecontinue()",
+            "        return 0",
+            "    end",
+            "end",
+            "",
+            "#@!",
+            "SFileBegin    name Schedule.m",
+            "begin P_Schedule arriving procedure",
+            "",
+            "",
+            "end",
+            "",
+            "#@!",
+            "SFileBegin    name BreakDown.m",
+            "begin P_BreakDown arriving procedure",
+            "",
+            "",
+            "end",
+            "",
+            "#@!"
+      ],
+      "description": ["New model template"]
+    },
+
+
+    "§while_single": {
+      "prefix": "§while_single",
+      "body": [   
+          "set i = 1",
+          "while i < ${1:<n>} do begin",
+          "\t//do something",
+          "\tinc i by 1",
+          "end"],
+      "description": "Descriptions: 'Single while loop'"          
+    },
+    "§while_single_wait": {
+      "prefix": "§while_single_wait",
+      "body": [   
+          "set ii = 1",
+          "while ii < ${1:<n>} do begin",
+          "\t//do something",
+          "\tinc ii by 1",
+          "end"],
+      "description": "Descriptions: 'Single while loop with waits involved'"          
+    },
+    "§while_double": {
+      "prefix": "§while_double",
+      "body": [   
+          "set i = 1",
+          "while i < ${1:<n>} do begin",
+          "\t//do something",
+          "\tset j = 1",
+          "\twhile j < ${2:<n2>} do begin",
+          "\t\t//do something",
+          "\t\tinc j by 1",
+          "\tend",
+          "\tinc i by 1",
+          "end"],
+      "description": "'Example 2.'"          
+    },
+    "§while_double_wait": {
+      "prefix": "§while_double_wait",
+      "body": [   
+          "set ii = 1",
+          "while ii < ${1:<n>} do begin",
+          "\t//do something",
+          "\tset jj = 1",
+          "\twhile jj < ${2:<n2>} do begin",
+          "\t\t//do something",
+          "\t\tinc jj by 1",
+          "\tend",
+          "\tinc ii by 1",
+          "end"],
+      "description": "Descriptions: 'Double while loop with waits involved'"         
+    },
+
+
+
+
+
+
+
+    "in-built a": {
+      "prefix": "#a",
+      "body": "a"
+    },
+    "in-built about": {
+      "prefix": "#about",
+      "body": "about"
+    },
+    "in-built absent": {
+      "prefix": "#absent",
+      "body": "absent"
+    },
+    "in-built absolute": {
+      "prefix": "#absolute",
+      "body": "absolute"
+    },
+    "in-built ac": {
+      "prefix": "#ac",
+      "body": "ac"
+    },
+    "in-built acc": {
+      "prefix": "#acc",
+      "body": "acc"
+    },
+    "in-built acceleration": {
+      "prefix": "#acceleration",
+      "body": "acceleration"
+    },
+    "in-built activation": {
+      "prefix": "#activation",
+      "body": "activation"
+    },
+    "in-built active": {
+      "prefix": "#active",
+      "body": "active"
+    },
+    "in-built after": {
+      "prefix": "#after",
+      "body": "after"
+    },
+    "in-built aisle": {
+      "prefix": "#aisle",
+      "body": "aisle"
+    },
+    "in-built aisles": {
+      "prefix": "#aisles",
+      "body": "aisles"
+    },
+    "in-built align": {
+      "prefix": "#align",
+      "body": "align"
+    },
+    "in-built all": {
+      "prefix": "#all",
+      "body": "all"
+    },
+    "in-built along": {
+      "prefix": "#along",
+      "body": "along"
+    },
+    "in-built among": {
+      "prefix": "#among",
+      "body": "among"
+    },
+    "in-built amount": {
+      "prefix": "#amount",
+      "body": "amount"
+    },
+    "in-built and": {
+      "prefix": "#and",
+      "body": "and"
+    },
+    "in-built ang": {
+      "prefix": "#ang",
+      "body": "ang"
+    },
+    "in-built angle": {
+      "prefix": "#angle",
+      "body": "angle"
+    },
+    "in-built angular": {
+      "prefix": "#angular",
+      "body": "angular"
+    },
+    "Append": {
+      "prefix": "$Append",
+      "body": "Append"
+    },
+    "in-built appending": {
+      "prefix": "#appending",
+      "body": "appending"
+    },
+    "in-built arriving": {
+      "prefix": "#arriving",
+      "body": "arriving"
+    },
+    "in-built as": {
+      "prefix": "#as",
+      "body": "as"
+    },
+    "in-built assignment": {
+      "prefix": "#assignment",
+      "body": "assignment"
+    },
+    "in-built at": {
+      "prefix": "#at",
+      "body": "at"
+    },
+    "in-built attribute": {
+      "prefix": "#attribute",
+      "body": "attribute"
+    },
+    "in-built available": {
+      "prefix": "#available",
+      "body": "available"
+    },
+    "in-built average": {
+      "prefix": "#average",
+      "body": "average"
+    },
+    "Avi": {
+      "prefix": "$Avi",
+      "body": "Avi"
+    },
+    "in-built backorder": {
+      "prefix": "#backorder",
+      "body": "backorder"
+    },
+    "in-built bank": {
+      "prefix": "#bank",
+      "body": "bank"
+    },
+    "in-built battery": {
+      "prefix": "#battery",
+      "body": "battery"
+    },
+    "in-built be": {
+      "prefix": "#be",
+      "body": "be"
+    },
+    "in-built before": {
+      "prefix": "#before",
+      "body": "before"
+    },
+    "in-built begin": {
+      "prefix": "#begin",
+      "body": "begin"
+    },
+    "in-built beginning": {
+      "prefix": "#beginning",
+      "body": "beginning"
+    },
+    "Black": {
+      "prefix": "$Black",
+      "body": "Black"
+    },
+    "in-built blob": {
+      "prefix": "#blob",
+      "body": "blob"
+    },
+    "in-built blobtemp": {
+      "prefix": "#blobtemp",
+      "body": "blobtemp"
+    },
+    "in-built block": {
+      "prefix": "#block",
+      "body": "block"
+    },
+    "in-built blocked": {
+      "prefix": "#blocked",
+      "body": "blocked"
+    },
+    "Blue": {
+      "prefix": "$Blue",
+      "body": "Blue"
+    },
+    "in-built board": {
+      "prefix": "#board",
+      "body": "board"
+    },
+    "in-built brake": {
+      "prefix": "#brake",
+      "body": "brake"
+    },
+    "in-built break": {
+      "prefix": "#break",
+      "body": "break"
+    },
+    "in-built bring": {
+      "prefix": "#bring",
+      "body": "bring"
+    },
+    "Brown": {
+      "prefix": "$Brown",
+      "body": "Brown"
+    },
+    "in-built bump": {
+      "prefix": "#bump",
+      "body": "bump"
+    },
+    "in-built bumped": {
+      "prefix": "#bumped",
+      "body": "bumped"
+    },
+    "in-built bumping": {
+      "prefix": "#bumping",
+      "body": "bumping"
+    },
+    "in-built but": {
+      "prefix": "#but",
+      "body": "but"
+    },
+    "in-built button": {
+      "prefix": "#button",
+      "body": "button"
+    },
+    "in-built by c": {
+      "prefix": "#by c",
+      "body": "by c"
+    },
+    "in-built call": {
+      "prefix": "#call",
+      "body": "call"
+    },
+    "in-built cam": {
+      "prefix": "#cam",
+      "body": "cam"
+    },
+    "in-built camera": {
+      "prefix": "#camera",
+      "body": "camera"
+    },
+    "in-built cancel": {
+      "prefix": "#cancel",
+      "body": "cancel"
+    },
+    "in-built capacity": {
+      "prefix": "#capacity",
+      "body": "capacity"
+    },
+    "in-built carrier": {
+      "prefix": "#carrier",
+      "body": "carrier"
+    },
+    "in-built case": {
+      "prefix": "#case",
+      "body": "case"
+    },
+    "in-built cen": {
+      "prefix": "#cen",
+      "body": "cen"
+    },
+    "in-built center": {
+      "prefix": "#center",
+      "body": "center"
+    },
+    "in-built Centimeter": {
+      "prefix": "#Centimeter",
+      "body": "Centimeter"
+    },
+    "in-built Centimeters": {
+      "prefix": "#Centimeters",
+      "body": "Centimeters"
+    },
+    "in-built Centimetre": {
+      "prefix": "#Centimetre",
+      "body": "Centimetre"
+    },
+    "in-built Centimetres": {
+      "prefix": "#Centimetres",
+      "body": "Centimetres"
+    },
+    "in-built change": {
+      "prefix": "#change",
+      "body": "change"
+    },
+    "in-built changed": {
+      "prefix": "#changed",
+      "body": "changed"
+    },
+    "in-built changeobz": {
+      "prefix": "#changeobz",
+      "body": "changeobz"
+    },
+    "in-built charge": {
+      "prefix": "#charge",
+      "body": "charge"
+    },
+    "in-built child": {
+      "prefix": "#child",
+      "body": "child"
+    },
+    "in-built choice": {
+      "prefix": "#choice",
+      "body": "choice"
+    },
+    "in-built choose": {
+      "prefix": "#choose",
+      "body": "choose"
+    },
+    "in-built chunk": {
+      "prefix": "#chunk",
+      "body": "chunk"
+    },
+    "in-built claim": {
+      "prefix": "#claim",
+      "body": "claim"
+    },
+    "in-built claimed": {
+      "prefix": "#claimed",
+      "body": "claimed"
+    },
+    "in-built claimpriority": {
+      "prefix": "#claimpriority",
+      "body": "claimpriority"
+    },
+    "in-built claims": {
+      "prefix": "#claims",
+      "body": "claims"
+    },
+    "in-built class": {
+      "prefix": "#class",
+      "body": "class"
+    },
+    "in-built classes": {
+      "prefix": "#classes",
+      "body": "classes"
+    },
+    "in-built cleared": {
+      "prefix": "#cleared",
+      "body": "cleared"
+    },
+    "in-built clock": {
+      "prefix": "#clock",
+      "body": "clock"
+    },
+    "in-built clone": {
+      "prefix": "#clone",
+      "body": "clone"
+    },
+    "in-built close": {
+      "prefix": "#close",
+      "body": "close"
+    },
+    "in-built closed": {
+      "prefix": "#closed",
+      "body": "closed"
+    },
+    "in-built closeness": {
+      "prefix": "#closeness",
+      "body": "closeness"
+    },
+    "in-built closest": {
+      "prefix": "#closest",
+      "body": "closest"
+    },
+    "in-built cm": {
+      "prefix": "#cm",
+      "body": "cm"
+    },
+    "in-built Cmeter": {
+      "prefix": "#Cmeter",
+      "body": "Cmeter"
+    },
+    "in-built Cmeters": {
+      "prefix": "#Cmeters",
+      "body": "Cmeters"
+    },
+    "in-built Cmetre": {
+      "prefix": "#Cmetre",
+      "body": "Cmetre"
+    },
+    "in-built Cmetres": {
+      "prefix": "#Cmetres",
+      "body": "Cmetres"
+    },
+    "in-built color": {
+      "prefix": "#color",
+      "body": "color"
+    },
+    "in-built colour": {
+      "prefix": "#colour",
+      "body": "colour"
+    },
+    "in-built configure": {
+      "prefix": "#configure",
+      "body": "configure"
+    },
+    "in-built contents": {
+      "prefix": "#contents",
+      "body": "contents"
+    },
+    "in-built continue": {
+      "prefix": "#continue",
+      "body": "continue"
+    },
+    "in-built continuous": {
+      "prefix": "#continuous",
+      "body": "continuous"
+    },
+    "in-built control": {
+      "prefix": "#control",
+      "body": "control"
+    },
+    "in-built Copy": {
+      "prefix": "#Copy",
+      "body": "Copy"
+    },
+    "in-built count": {
+      "prefix": "#count",
+      "body": "count"
+    },
+    "in-built counter": {
+      "prefix": "#counter",
+      "body": "counter"
+    },
+    "in-built cps": {
+      "prefix": "#cps",
+      "body": "cps"
+    },
+    "in-built crab": {
+      "prefix": "#crab",
+      "body": "crab"
+    },
+    "in-built crabbing": {
+      "prefix": "#crabbing",
+      "body": "crabbing"
+    },
+    "in-built create": {
+      "prefix": "#create",
+      "body": "create"
+    },
+    "in-built current": {
+      "prefix": "#current",
+      "body": "current"
+    },
+    "in-built curve": {
+      "prefix": "#curve",
+      "body": "curve"
+    },
+    "Custom": {
+      "prefix": "$Custom",
+      "body": "Custom"
+    },
+    "Cyan": {
+      "prefix": "$Cyan",
+      "body": "Cyan"
+    },
+    "in-built Cycle": {
+      "prefix": "#Cycle",
+      "body": "Cycle"
+    },
+    "in-built Cycles": {
+      "prefix": "#Cycles",
+      "body": "Cycles"
+    },
+    "in-built d": {
+      "prefix": "#d",
+      "body": "d"
+    },
+    "Darkgray": {
+      "prefix": "$Darkgray",
+      "body": "Darkgray"
+    },
+    "Darkgrey": {
+      "prefix": "$Darkgrey",
+      "body": "Darkgrey"
+    },
+    "Day": {
+      "prefix": "$Day",
+      "body": "Day"
+    },
+    "in-built Days": {
+      "prefix": "#Days",
+      "body": "Days"
+    },
+    "in-built dec": {
+      "prefix": "#dec",
+      "body": "dec"
+    },
+    "in-built decelerate": {
+      "prefix": "#decelerate",
+      "body": "decelerate"
+    },
+    "in-built deceleration": {
+      "prefix": "#deceleration",
+      "body": "deceleration"
+    },
+    "in-built decrement": {
+      "prefix": "#decrement",
+      "body": "decrement"
+    },
+    "Define": {
+      "prefix": "$Define",
+      "body": "Define"
+    },
+    "in-built defined": {
+      "prefix": "#defined",
+      "body": "defined"
+    },
+    "in-built Deg": {
+      "prefix": "#Deg",
+      "body": "Deg"
+    },
+    "in-built Degree": {
+      "prefix": "#Degree",
+      "body": "Degree"
+    },
+    "in-built Degrees": {
+      "prefix": "#Degrees",
+      "body": "Degrees"
+    },
+    "in-built Degs": {
+      "prefix": "#Degs",
+      "body": "Degs"
+    },
+    "in-built delay": {
+      "prefix": "#delay",
+      "body": "delay"
+    },
+    "in-built delayed": {
+      "prefix": "#delayed",
+      "body": "delayed"
+    },
+    "in-built delimiter": {
+      "prefix": "#delimiter",
+      "body": "delimiter"
+    },
+    "in-built deliver": {
+      "prefix": "#deliver",
+      "body": "deliver"
+    },
+    "in-built delivering": {
+      "prefix": "#delivering",
+      "body": "delivering"
+    },
+    "in-built delivery": {
+      "prefix": "#delivery",
+      "body": "delivery"
+    },
+    "in-built des": {
+      "prefix": "#des",
+      "body": "des"
+    },
+    "in-built desc": {
+      "prefix": "#desc",
+      "body": "desc"
+    },
+    "in-built description": {
+      "prefix": "#description",
+      "body": "description"
+    },
+    "in-built destination": {
+      "prefix": "#destination",
+      "body": "destination"
+    },
+    "in-built destroy": {
+      "prefix": "#destroy",
+      "body": "destroy"
+    },
+    "in-built dim": {
+      "prefix": "#dim",
+      "body": "dim"
+    },
+    "in-built direction": {
+      "prefix": "#direction",
+      "body": "direction"
+    },
+    "in-built dis": {
+      "prefix": "#dis",
+      "body": "dis"
+    },
+    "in-built dispatch": {
+      "prefix": "#dispatch",
+      "body": "dispatch"
+    },
+    "in-built display": {
+      "prefix": "#display",
+      "body": "display"
+    },
+    "in-built displaystep": {
+      "prefix": "#displaystep",
+      "body": "displaystep"
+    },
+    "in-built distance": {
+      "prefix": "#distance",
+      "body": "distance"
+    },
+    "Dkgray": {
+      "prefix": "$Dkgray",
+      "body": "Dkgray"
+    },
+    "Dkgrey": {
+      "prefix": "$Dkgrey",
+      "body": "Dkgrey"
+    },
+    "in-built do": {
+      "prefix": "#do",
+      "body": "do"
+    },
+    "in-built done": {
+      "prefix": "#done",
+      "body": "done"
+    },
+    "in-built down": {
+      "prefix": "#down",
+      "body": "down"
+    },
+    "in-built dropmenu": {
+      "prefix": "#dropmenu",
+      "body": "dropmenu"
+    },
+    "in-built dropping": {
+      "prefix": "#dropping",
+      "body": "dropping"
+    },
+    "in-built e": {
+      "prefix": "#e",
+      "body": "e"
+    },
+    "in-built each": {
+      "prefix": "#each",
+      "body": "each"
+    },
+    "in-built eligible": {
+      "prefix": "#eligible",
+      "body": "eligible"
+    },
+    "in-built else": {
+      "prefix": "#else",
+      "body": "else"
+    },
+    "End": {
+      "prefix": "$End",
+      "body": "End"
+    },
+    "in-built endprocedure": {
+      "prefix": "#endprocedure",
+      "body": "endprocedure"
+    },
+    "in-built entries": {
+      "prefix": "#entries",
+      "body": "entries"
+    },
+    "in-built entry": {
+      "prefix": "#entry",
+      "body": "entry"
+    },
+    "in-built eof": {
+      "prefix": "#eof",
+      "body": "eof"
+    },
+    "in-built error": {
+      "prefix": "#error",
+      "body": "error"
+    },
+    "in-built exponential": {
+      "prefix": "#exponential",
+      "body": "exponential"
+    },
+    "in-built f": {
+      "prefix": "#f",
+      "body": "f"
+    },
+    "in-built factor": {
+      "prefix": "#factor",
+      "body": "factor"
+    },
+    "False": {
+      "prefix": "$False",
+      "body": "False"
+    },
+    "in-built Feet": {
+      "prefix": "#Feet",
+      "body": "Feet"
+    },
+    "in-built file": {
+      "prefix": "#file",
+      "body": "file"
+    },
+    "Filename": {
+      "prefix": "$Filename",
+      "body": "Filename"
+    },
+    "in-built filled": {
+      "prefix": "#filled",
+      "body": "filled"
+    },
+    "in-built fillpipe": {
+      "prefix": "#fillpipe",
+      "body": "fillpipe"
+    },
+    "in-built finish": {
+      "prefix": "#finish",
+      "body": "finish"
+    },
+    "in-built finished": {
+      "prefix": "#finished",
+      "body": "finished"
+    },
+    "in-built first": {
+      "prefix": "#first",
+      "body": "first"
+    },
+    "in-built float": {
+      "prefix": "#float",
+      "body": "float"
+    },
+    "in-built focal": {
+      "prefix": "#focal",
+      "body": "focal"
+    },
+    "in-built focus": {
+      "prefix": "#focus",
+      "body": "focus"
+    },
+    "in-built Foot": {
+      "prefix": "#Foot",
+      "body": "Foot"
+    },
+    "in-built for": {
+      "prefix": "#for",
+      "body": "for"
+    },
+    "Format": {
+      "prefix": "$Format",
+      "body": "Format"
+    },
+    "in-built forward": {
+      "prefix": "#forward",
+      "body": "forward"
+    },
+    "in-built fpm": {
+      "prefix": "#fpm",
+      "body": "fpm"
+    },
+    "in-built fps": {
+      "prefix": "#fps",
+      "body": "fps"
+    },
+    "Framespersec": {
+      "prefix": "$Framespersec",
+      "body": "Framespersec"
+    },
+    "in-built free": {
+      "prefix": "#free",
+      "body": "free"
+    },
+    "in-built from": {
+      "prefix": "#from",
+      "body": "from"
+    },
+    "in-built front": {
+      "prefix": "#front",
+      "body": "front"
+    },
+    "in-built Ft": {
+      "prefix": "#Ft",
+      "body": "Ft"
+    },
+    "in-built full": {
+      "prefix": "#full",
+      "body": "full"
+    },
+    "in-built funcload": {
+      "prefix": "#funcload",
+      "body": "funcload"
+    },
+    "in-built function": {
+      "prefix": "#function",
+      "body": "function"
+    },
+    "in-built funcveh": {
+      "prefix": "#funcveh",
+      "body": "funcveh"
+    },
+    "in-built g": {
+      "prefix": "#g",
+      "body": "g"
+    },
+    "in-built gamma": {
+      "prefix": "#gamma",
+      "body": "gamma"
+    },
+    "Generate": {
+      "prefix": "$Generate",
+      "body": "Generate"
+    },
+    "in-built get": {
+      "prefix": "#get",
+      "body": "get"
+    },
+    "in-built going": {
+      "prefix": "#going",
+      "body": "going"
+    },
+    "in-built greatest": {
+      "prefix": "#greatest",
+      "body": "greatest"
+    },
+    "Green": {
+      "prefix": "$Green",
+      "body": "Green"
+    },
+    "in-built grid": {
+      "prefix": "#grid",
+      "body": "grid"
+    },
+    "in-built h": {
+      "prefix": "#h",
+      "body": "h"
+    },
+    "Height": {
+      "prefix": "$Height",
+      "body": "Height"
+    },
+    "in-built highlight": {
+      "prefix": "#highlight",
+      "body": "highlight"
+    },
+    "in-built hilight": {
+      "prefix": "#hilight",
+      "body": "hilight"
+    },
+    "in-built home": {
+      "prefix": "#home",
+      "body": "home"
+    },
+    "in-built horizontal": {
+      "prefix": "#horizontal",
+      "body": "horizontal"
+    },
+    "in-built Hour": {
+      "prefix": "#Hour",
+      "body": "Hour"
+    },
+    "in-built Hours": {
+      "prefix": "#Hours",
+      "body": "Hours"
+    },
+    "Hr": {
+      "prefix": "$Hr",
+      "body": "Hr"
+    },
+    "in-built Hrs": {
+      "prefix": "#Hrs",
+      "body": "Hrs"
+    },
+    "in-built idle": {
+      "prefix": "#idle",
+      "body": "idle"
+    },
+    "in-built if": {
+      "prefix": "#if",
+      "body": "if"
+    },
+    "In": {
+      "prefix": "$In",
+      "body": "In"
+    },
+    "in-built inc": {
+      "prefix": "#inc",
+      "body": "inc"
+    },
+    "in-built Inch": {
+      "prefix": "#Inch",
+      "body": "Inch"
+    },
+    "in-built Inches": {
+      "prefix": "#Inches",
+      "body": "Inches"
+    },
+    "in-built Inchs": {
+      "prefix": "#Inchs",
+      "body": "Inchs"
+    },
+    "in-built increment": {
+      "prefix": "#increment",
+      "body": "increment"
+    },
+    "in-built index": {
+      "prefix": "#index",
+      "body": "index"
+    },
+    "in-built Inherit": {
+      "prefix": "#Inherit",
+      "body": "Inherit"
+    },
+    "in-built initial": {
+      "prefix": "#initial",
+      "body": "initial"
+    },
+    "in-built initialization": {
+      "prefix": "#initialization",
+      "body": "initialization"
+    },
+    "in-built insert": {
+      "prefix": "#insert",
+      "body": "insert"
+    },
+    "in-built Inst": {
+      "prefix": "#Inst",
+      "body": "Inst"
+    },
+    "in-built Instance": {
+      "prefix": "#Instance",
+      "body": "Instance"
+    },
+    "in-built integer": {
+      "prefix": "#integer",
+      "body": "integer"
+    },
+    "in-built into": {
+      "prefix": "#into",
+      "body": "into"
+    },
+    "Invis": {
+      "prefix": "$Invis",
+      "body": "Invis"
+    },
+    "Invisible": {
+      "prefix": "$Invisible",
+      "body": "Invisible"
+    },
+    "in-built is": {
+      "prefix": "#is",
+      "body": "is"
+    },
+    "in-built item": {
+      "prefix": "#item",
+      "body": "item"
+    },
+    "in-built jacc": {
+      "prefix": "#jacc",
+      "body": "jacc"
+    },
+    "in-built jacceleration": {
+      "prefix": "#jacceleration",
+      "body": "jacceleration"
+    },
+    "in-built jnt": {
+      "prefix": "#jnt",
+      "body": "jnt"
+    },
+    "in-built job": {
+      "prefix": "#job",
+      "body": "job"
+    },
+    "in-built joint": {
+      "prefix": "#joint",
+      "body": "joint"
+    },
+    "in-built jump": {
+      "prefix": "#jump",
+      "body": "jump"
+    },
+    "in-built jvel": {
+      "prefix": "#jvel",
+      "body": "jvel"
+    },
+    "in-built jvelocity": {
+      "prefix": "#jvelocity",
+      "body": "jvelocity"
+    },
+    "in-built keepstv": {
+      "prefix": "#keepstv",
+      "body": "keepstv"
+    },
+    "Keyframefreq": {
+      "prefix": "$Keyframefreq",
+      "body": "Keyframefreq"
+    },
+    "in-built Kilometer": {
+      "prefix": "#Kilometer",
+      "body": "Kilometer"
+    },
+    "in-built Kilometers": {
+      "prefix": "#Kilometers",
+      "body": "Kilometers"
+    },
+    "in-built Kilometre": {
+      "prefix": "#Kilometre",
+      "body": "Kilometre"
+    },
+    "in-built Kilometres": {
+      "prefix": "#Kilometres",
+      "body": "Kilometres"
+    },
+    "in-built km": {
+      "prefix": "#km",
+      "body": "km"
+    },
+    "in-built Kmeter": {
+      "prefix": "#Kmeter",
+      "body": "Kmeter"
+    },
+    "in-built Kmeters": {
+      "prefix": "#Kmeters",
+      "body": "Kmeters"
+    },
+    "in-built Kmetre": {
+      "prefix": "#Kmetre",
+      "body": "Kmetre"
+    },
+    "in-built Kmetres": {
+      "prefix": "#Kmetres",
+      "body": "Kmetres"
+    },
+    "in-built kph": {
+      "prefix": "#kph",
+      "body": "kph"
+    },
+    "in-built l": {
+      "prefix": "#l",
+      "body": "l"
+    },
+    "in-built label": {
+      "prefix": "#label",
+      "body": "label"
+    },
+    "in-built labels": {
+      "prefix": "#labels",
+      "body": "labels"
+    },
+    "in-built laps": {
+      "prefix": "#laps",
+      "body": "laps"
+    },
+    "in-built last": {
+      "prefix": "#last",
+      "body": "last"
+    },
+    "in-built leadpos": {
+      "prefix": "#leadpos",
+      "body": "leadpos"
+    },
+    "in-built leadvel": {
+      "prefix": "#leadvel",
+      "body": "leadvel"
+    },
+    "in-built least": {
+      "prefix": "#least",
+      "body": "least"
+    },
+    "in-built leave": {
+      "prefix": "#leave",
+      "body": "leave"
+    },
+    "in-built leaving": {
+      "prefix": "#leaving",
+      "body": "leaving"
+    },
+    "in-built left": {
+      "prefix": "#left",
+      "body": "left"
+    },
+    "in-built len": {
+      "prefix": "#len",
+      "body": "len"
+    },
+    "in-built length": {
+      "prefix": "#length",
+      "body": "length"
+    },
+    "in-built level": {
+      "prefix": "#level",
+      "body": "level"
+    },
+    "Lightblue": {
+      "prefix": "$Lightblue",
+      "body": "Lightblue"
+    },
+    "Lightgray": {
+      "prefix": "$Lightgray",
+      "body": "Lightgray"
+    },
+    "Lightgreen": {
+      "prefix": "$Lightgreen",
+      "body": "Lightgreen"
+    },
+    "Lightgrey": {
+      "prefix": "$Lightgrey",
+      "body": "Lightgrey"
+    },
+    "Lightyellow": {
+      "prefix": "$Lightyellow",
+      "body": "Lightyellow"
+    },
+    "in-built limit": {
+      "prefix": "#limit",
+      "body": "limit"
+    },
+    "in-built line": {
+      "prefix": "#line",
+      "body": "line"
+    },
+    "in-built list": {
+      "prefix": "#list",
+      "body": "list"
+    },
+    "in-built load": {
+      "prefix": "#load",
+      "body": "load"
+    },
+    "in-built loads": {
+      "prefix": "#loads",
+      "body": "loads"
+    },
+    "in-built loadtype": {
+      "prefix": "#loadtype",
+      "body": "loadtype"
+    },
+    "in-built location": {
+      "prefix": "#location",
+      "body": "location"
+    },
+    "in-built locations": {
+      "prefix": "#locations",
+      "body": "locations"
+    },
+    "in-built lognormal": {
+      "prefix": "#lognormal",
+      "body": "lognormal"
+    },
+    "in-built lowest": {
+      "prefix": "#lowest",
+      "body": "lowest"
+    },
+    "Ltblue": {
+      "prefix": "$Ltblue",
+      "body": "Ltblue"
+    },
+    "in-built ltgray": {
+      "prefix": "#ltgray",
+      "body": "ltgray"
+    },
+    "Ltgreen": {
+      "prefix": "$Ltgreen",
+      "body": "Ltgreen"
+    },
+    "in-built LtGrey": {
+      "prefix": "#LtGrey",
+      "body": "LtGrey"
+    },
+    "Ltyellow": {
+      "prefix": "$Ltyellow",
+      "body": "Ltyellow"
+    },
+    "in-built m": {
+      "prefix": "#m",
+      "body": "m"
+    },
+    "in-built machinename": {
+      "prefix": "#machinename",
+      "body": "machinename"
+    },
+    "Magenta": {
+      "prefix": "$Magenta",
+      "body": "Magenta"
+    },
+    "in-built match": {
+      "prefix": "#match",
+      "body": "match"
+    },
+    "in-built material": {
+      "prefix": "#material",
+      "body": "material"
+    },
+    "in-built max": {
+      "prefix": "#max",
+      "body": "max"
+    },
+    "in-built maximum": {
+      "prefix": "#maximum",
+      "body": "maximum"
+    },
+    "in-built merge": {
+      "prefix": "#merge",
+      "body": "merge"
+    },
+    "in-built message": {
+      "prefix": "#message",
+      "body": "message"
+    },
+    "in-built Meter": {
+      "prefix": "#Meter",
+      "body": "Meter"
+    },
+    "in-built Meters": {
+      "prefix": "#Meters",
+      "body": "Meters"
+    },
+    "in-built Metre": {
+      "prefix": "#Metre",
+      "body": "Metre"
+    },
+    "in-built Metres": {
+      "prefix": "#Metres",
+      "body": "Metres"
+    },
+    "in-built Mi": {
+      "prefix": "#Mi",
+      "body": "Mi"
+    },
+    "in-built Micrometer": {
+      "prefix": "#Micrometer",
+      "body": "Micrometer"
+    },
+    "in-built Micrometers": {
+      "prefix": "#Micrometers",
+      "body": "Micrometers"
+    },
+    "in-built Micrometre": {
+      "prefix": "#Micrometre",
+      "body": "Micrometre"
+    },
+    "in-built Micrometres": {
+      "prefix": "#Micrometres",
+      "body": "Micrometres"
+    },
+    "in-built Microsec": {
+      "prefix": "#Microsec",
+      "body": "Microsec"
+    },
+    "in-built Microsecond": {
+      "prefix": "#Microsecond",
+      "body": "Microsecond"
+    },
+    "in-built Microseconds": {
+      "prefix": "#Microseconds",
+      "body": "Microseconds"
+    },
+    "in-built Microsecs": {
+      "prefix": "#Microsecs",
+      "body": "Microsecs"
+    },
+    "in-built Mile": {
+      "prefix": "#Mile",
+      "body": "Mile"
+    },
+    "in-built Miles": {
+      "prefix": "#Miles",
+      "body": "Miles"
+    },
+    "in-built Millimeter": {
+      "prefix": "#Millimeter",
+      "body": "Millimeter"
+    },
+    "in-built Millimeters": {
+      "prefix": "#Millimeters",
+      "body": "Millimeters"
+    },
+    "in-built Millimetre": {
+      "prefix": "#Millimetre",
+      "body": "Millimetre"
+    },
+    "in-built Millimetres": {
+      "prefix": "#Millimetres",
+      "body": "Millimetres"
+    },
+    "in-built Millisec": {
+      "prefix": "#Millisec",
+      "body": "Millisec"
+    },
+    "in-built Millisecond": {
+      "prefix": "#Millisecond",
+      "body": "Millisecond"
+    },
+    "in-built Milliseconds": {
+      "prefix": "#Milliseconds",
+      "body": "Milliseconds"
+    },
+    "in-built Millisecs": {
+      "prefix": "#Millisecs",
+      "body": "Millisecs"
+    },
+    "in-built Min": {
+      "prefix": "#Min",
+      "body": "Min"
+    },
+    "in-built minimum": {
+      "prefix": "#minimum",
+      "body": "minimum"
+    },
+    "in-built Mins": {
+      "prefix": "#Mins",
+      "body": "Mins"
+    },
+    "in-built Minute": {
+      "prefix": "#Minute",
+      "body": "Minute"
+    },
+    "in-built Minutes": {
+      "prefix": "#Minutes",
+      "body": "Minutes"
+    },
+    "in-built Mis": {
+      "prefix": "#Mis",
+      "body": "Mis"
+    },
+    "in-built mm": {
+      "prefix": "#mm",
+      "body": "mm"
+    },
+    "in-built Mmeter": {
+      "prefix": "#Mmeter",
+      "body": "Mmeter"
+    },
+    "in-built Mmeters": {
+      "prefix": "#Mmeters",
+      "body": "Mmeters"
+    },
+    "in-built Mmetre": {
+      "prefix": "#Mmetre",
+      "body": "Mmetre"
+    },
+    "in-built Mmetres": {
+      "prefix": "#Mmetres",
+      "body": "Mmetres"
+    },
+    "in-built mmsyncmessage": {
+      "prefix": "#mmsyncmessage",
+      "body": "mmsyncmessage"
+    },
+    "in-built model": {
+      "prefix": "#model",
+      "body": "model"
+    },
+    "in-built monitor": {
+      "prefix": "#monitor",
+      "body": "monitor"
+    },
+    "in-built motion": {
+      "prefix": "#motion",
+      "body": "motion"
+    },
+    "in-built motor": {
+      "prefix": "#motor",
+      "body": "motor"
+    },
+    "in-built move": {
+      "prefix": "#move",
+      "body": "move"
+    },
+    "in-built movepriority": {
+      "prefix": "#movepriority",
+      "body": "movepriority"
+    },
+    "Movie": {
+      "prefix": "$Movie",
+      "body": "Movie"
+    },
+    "in-built moving": {
+      "prefix": "#moving",
+      "body": "moving"
+    },
+    "Mpeg": {
+      "prefix": "$Mpeg",
+      "body": "Mpeg"
+    },
+    "in-built mph": {
+      "prefix": "#mph",
+      "body": "mph"
+    },
+    "in-built mpm": {
+      "prefix": "#mpm",
+      "body": "mpm"
+    },
+    "in-built mps": {
+      "prefix": "#mps",
+      "body": "mps"
+    },
+    "in-built ms": {
+      "prefix": "#ms",
+      "body": "ms"
+    },
+    "in-built Msec": {
+      "prefix": "#Msec",
+      "body": "Msec"
+    },
+    "in-built Msecond": {
+      "prefix": "#Msecond",
+      "body": "Msecond"
+    },
+    "in-built Mseconds": {
+      "prefix": "#Mseconds",
+      "body": "Mseconds"
+    },
+    "in-built Msecs": {
+      "prefix": "#Msecs",
+      "body": "Msecs"
+    },
+    "in-built n": {
+      "prefix": "#n",
+      "body": "n"
+    },
+    "in-built Nanometer": {
+      "prefix": "#Nanometer",
+      "body": "Nanometer"
+    },
+    "in-built Nanometers": {
+      "prefix": "#Nanometers",
+      "body": "Nanometers"
+    },
+    "in-built Nanometre": {
+      "prefix": "#Nanometre",
+      "body": "Nanometre"
+    },
+    "in-built Nanomtres": {
+      "prefix": "#Nanomtres",
+      "body": "Nanomtres"
+    },
+    "in-built Nanosec": {
+      "prefix": "#Nanosec",
+      "body": "Nanosec"
+    },
+    "in-built Nanosecond": {
+      "prefix": "#Nanosecond",
+      "body": "Nanosecond"
+    },
+    "in-built Nanoseconds": {
+      "prefix": "#Nanoseconds",
+      "body": "Nanoseconds"
+    },
+    "in-built Nanosecs": {
+      "prefix": "#Nanosecs",
+      "body": "Nanosecs"
+    },
+    "in-built navigation": {
+      "prefix": "#navigation",
+      "body": "navigation"
+    },
+    "in-built net": {
+      "prefix": "#net",
+      "body": "net"
+    },
+    "in-built new": {
+      "prefix": "#new",
+      "body": "new"
+    },
+    "in-built next": {
+      "prefix": "#next",
+      "body": "next"
+    },
+    "in-built nextclock": {
+      "prefix": "#nextclock",
+      "body": "nextclock"
+    },
+    "in-built nextof": {
+      "prefix": "#nextof",
+      "body": "nextof"
+    },
+    "in-built nlt": {
+      "prefix": "#nlt",
+      "body": "nlt"
+    },
+    "in-built nm": {
+      "prefix": "#nm",
+      "body": "nm"
+    },
+    "in-built Nmeter": {
+      "prefix": "#Nmeter",
+      "body": "Nmeter"
+    },
+    "in-built Nmeters": {
+      "prefix": "#Nmeters",
+      "body": "Nmeters"
+    },
+    "in-built Nmetre": {
+      "prefix": "#Nmetre",
+      "body": "Nmetre"
+    },
+    "in-built Nmetres": {
+      "prefix": "#Nmetres",
+      "body": "Nmetres"
+    },
+    "in-built no": {
+      "prefix": "#no",
+      "body": "no"
+    },
+    "Nocolor": {
+      "prefix": "$Nocolor",
+      "body": "Nocolor"
+    },
+    "Nocolour": {
+      "prefix": "$Nocolour",
+      "body": "Nocolour"
+    },
+    "in-built norm": {
+      "prefix": "#norm",
+      "body": "norm"
+    },
+    "in-built normal": {
+      "prefix": "#normal",
+      "body": "normal"
+    },
+    "in-built not": {
+      "prefix": "#not",
+      "body": "not"
+    },
+    "in-built notequal": {
+      "prefix": "#notequal",
+      "body": "notequal"
+    },
+    "in-built ns": {
+      "prefix": "#ns",
+      "body": "ns"
+    },
+    "in-built Nsec": {
+      "prefix": "#Nsec",
+      "body": "Nsec"
+    },
+    "in-built Nsecond": {
+      "prefix": "#Nsecond",
+      "body": "Nsecond"
+    },
+    "in-built Nseconds": {
+      "prefix": "#Nseconds",
+      "body": "Nseconds"
+    },
+    "in-built Nsecs": {
+      "prefix": "#Nsecs",
+      "body": "Nsecs"
+    },
+    "in-built null": {
+      "prefix": "#null",
+      "body": "null"
+    },
+    "in-built number": {
+      "prefix": "#number",
+      "body": "number"
+    },
+    "in-built numeric": {
+      "prefix": "#numeric",
+      "body": "numeric"
+    },
+    "in-built obj": {
+      "prefix": "#obj",
+      "body": "obj"
+    },
+    "in-built object": {
+      "prefix": "#object",
+      "body": "object"
+    },
+    "in-built obz": {
+      "prefix": "#obz",
+      "body": "obz"
+    },
+    "in-built of": {
+      "prefix": "#of",
+      "body": "of"
+    },
+    "in-built off": {
+      "prefix": "#off",
+      "body": "off"
+    },
+    "in-built ok": {
+      "prefix": "#ok",
+      "body": "ok"
+    },
+    "in-built on": {
+      "prefix": "#on",
+      "body": "on"
+    },
+    "in-built oneof": {
+      "prefix": "#oneof",
+      "body": "oneof"
+    },
+    "in-built opccallback": {
+      "prefix": "#opccallback",
+      "body": "opccallback"
+    },
+    "in-built OPCTimestamp": {
+      "prefix": "#OPCTimestamp",
+      "body": "OPCTimestamp"
+    },
+    "in-built OPCQuality": {
+      "prefix": "#OPCQuality",
+      "body": "OPCQuality"
+    },
+    "in-built open": {
+      "prefix": "#open",
+      "body": "open"
+    },
+    "in-built or": {
+      "prefix": "#or",
+      "body": "or"
+    },
+    "Orange": {
+      "prefix": "$Orange",
+      "body": "Orange"
+    },
+    "in-built order": {
+      "prefix": "#order",
+      "body": "order"
+    },
+    "in-built ordered": {
+      "prefix": "#ordered",
+      "body": "ordered"
+    },
+    "in-built orderlist": {
+      "prefix": "#orderlist",
+      "body": "orderlist"
+    },
+    "in-built orientation": {
+      "prefix": "#orientation",
+      "body": "orientation"
+    },
+    "in-built Orientx": {
+      "prefix": "#Orientx",
+      "body": "Orientx"
+    },
+    "in-built Orienty": {
+      "prefix": "#Orienty",
+      "body": "Orienty"
+    },
+    "in-built Orientz": {
+      "prefix": "#Orientz",
+      "body": "Orientz"
+    },
+    "in-built ortho": {
+      "prefix": "#ortho",
+      "body": "ortho"
+    },
+    "in-built orthogonal": {
+      "prefix": "#orthogonal",
+      "body": "orthogonal"
+    },
+    "in-built out": {
+      "prefix": "#out",
+      "body": "out"
+    },
+    "Quality": {
+      "prefix": "$Quality",
+      "body": "Quality"
+    },
+    "in-built queue": {
+      "prefix": "#queue",
+      "body": "queue"
+    },
+    "in-built pan": {
+      "prefix": "#pan",
+      "body": "pan"
+    },
+    "in-built parameter": {
+      "prefix": "#parameter",
+      "body": "parameter"
+    },
+    "in-built park": {
+      "prefix": "#park",
+      "body": "park"
+    },
+    "in-built parking": {
+      "prefix": "#parking",
+      "body": "parking"
+    },
+    "in-built passing": {
+      "prefix": "#passing",
+      "body": "passing"
+    },
+    "in-built path": {
+      "prefix": "#path",
+      "body": "path"
+    },
+    "Pause": {
+      "prefix": "$Pause",
+      "body": "Pause"
+    },
+    "in-built per": {
+      "prefix": "#per",
+      "body": "per"
+    },
+    "in-built percent": {
+      "prefix": "#percent",
+      "body": "percent"
+    },
+    "in-built persp": {
+      "prefix": "#persp",
+      "body": "persp"
+    },
+    "in-built perspective": {
+      "prefix": "#perspective",
+      "body": "perspective"
+    },
+    "in-built photoeye": {
+      "prefix": "#photoeye",
+      "body": "photoeye"
+    },
+    "in-built pi": {
+      "prefix": "#pi",
+      "body": "pi"
+    },
+    "in-built pickup": {
+      "prefix": "#pickup",
+      "body": "pickup"
+    },
+    "in-built pict": {
+      "prefix": "#pict",
+      "body": "pict"
+    },
+    "in-built picture": {
+      "prefix": "#picture",
+      "body": "picture"
+    },
+    "in-built pipe": {
+      "prefix": "#pipe",
+      "body": "pipe"
+    },
+    "in-built Play": {
+      "prefix": "#Play",
+      "body": "Play"
+    },
+    "Playsoundfile": {
+      "prefix": "$Playsoundfile",
+      "body": "Playsoundfile"
+    },
+    "in-built plot": {
+      "prefix": "#plot",
+      "body": "plot"
+    },
+    "in-built point": {
+      "prefix": "#point",
+      "body": "point"
+    },
+    "in-built pos": {
+      "prefix": "#pos",
+      "body": "pos"
+    },
+    "in-built position": {
+      "prefix": "#position",
+      "body": "position"
+    },
+    "in-built preempt": {
+      "prefix": "#preempt",
+      "body": "preempt"
+    },
+    "in-built preempted": {
+      "prefix": "#preempted",
+      "body": "preempted"
+    },
+    "in-built previous": {
+      "prefix": "#previous",
+      "body": "previous"
+    },
+    "in-built print": {
+      "prefix": "#print",
+      "body": "print"
+    },
+    "in-built priority": {
+      "prefix": "#priority",
+      "body": "priority"
+    },
+    "in-built procedure": {
+      "prefix": "#procedure",
+      "body": "procedure"
+    },
+    "in-built process": {
+      "prefix": "#process",
+      "body": "process"
+    },
+    "in-built procindex": {
+      "prefix": "#procindex",
+      "body": "procindex"
+    },
+    "Purple": {
+      "prefix": "$Purple",
+      "body": "Purple"
+    },
+    "in-built r": {
+      "prefix": "#r",
+      "body": "r"
+    },
+    "in-built racc": {
+      "prefix": "#racc",
+      "body": "racc"
+    },
+    "in-built racceleration": {
+      "prefix": "#racceleration",
+      "body": "racceleration"
+    },
+    "in-built Rad": {
+      "prefix": "#Rad",
+      "body": "Rad"
+    },
+    "in-built Radian": {
+      "prefix": "#Radian",
+      "body": "Radian"
+    },
+    "in-built Radians": {
+      "prefix": "#Radians",
+      "body": "Radians"
+    },
+    "in-built radius": {
+      "prefix": "#radius",
+      "body": "radius"
+    },
+    "in-built Rads": {
+      "prefix": "#Rads",
+      "body": "Rads"
+    },
+    "in-built random": {
+      "prefix": "#random",
+      "body": "random"
+    },
+    "in-built rate": {
+      "prefix": "#rate",
+      "body": "rate"
+    },
+    "in-built rc": {
+      "prefix": "#rc",
+      "body": "rc"
+    },
+    "in-built read": {
+      "prefix": "#read",
+      "body": "read"
+    },
+    "in-built reading": {
+      "prefix": "#reading",
+      "body": "reading"
+    },
+    "in-built ready": {
+      "prefix": "#ready",
+      "body": "ready"
+    },
+    "in-built real": {
+      "prefix": "#real",
+      "body": "real"
+    },
+    "in-built realclock": {
+      "prefix": "#realclock",
+      "body": "realclock"
+    },
+    "Record": {
+      "prefix": "$Record",
+      "body": "Record"
+    },
+    "Red": {
+      "prefix": "$Red",
+      "body": "Red"
+    },
+    "in-built rel": {
+      "prefix": "#rel",
+      "body": "rel"
+    },
+    "in-built relative": {
+      "prefix": "#relative",
+      "body": "relative"
+    },
+    "in-built release": {
+      "prefix": "#release",
+      "body": "release"
+    },
+    "in-built released": {
+      "prefix": "#released",
+      "body": "released"
+    },
+    "in-built remaining": {
+      "prefix": "#remaining",
+      "body": "remaining"
+    },
+    "in-built remove": {
+      "prefix": "#remove",
+      "body": "remove"
+    },
+    "in-built repeat": {
+      "prefix": "#repeat",
+      "body": "repeat"
+    },
+    "in-built report": {
+      "prefix": "#report",
+      "body": "report"
+    },
+    "in-built reports": {
+      "prefix": "#reports",
+      "body": "reports"
+    },
+    "in-built reserve": {
+      "prefix": "#reserve",
+      "body": "reserve"
+    },
+    "in-built resource": {
+      "prefix": "#resource",
+      "body": "resource"
+    },
+    "in-built result": {
+      "prefix": "#result",
+      "body": "result"
+    },
+    "in-built resume": {
+      "prefix": "#resume",
+      "body": "resume"
+    },
+    "in-built retrieval": {
+      "prefix": "#retrieval",
+      "body": "retrieval"
+    },
+    "in-built retrieve": {
+      "prefix": "#retrieve",
+      "body": "retrieve"
+    },
+    "in-built retrieving": {
+      "prefix": "#retrieving",
+      "body": "retrieving"
+    },
+    "in-built return": {
+      "prefix": "#return",
+      "body": "return"
+    },
+    "in-built reverse": {
+      "prefix": "#reverse",
+      "body": "reverse"
+    },
+    "in-built right": {
+      "prefix": "#right",
+      "body": "right"
+    },
+    "in-built rn": {
+      "prefix": "#rn",
+      "body": "rn"
+    },
+    "in-built rot": {
+      "prefix": "#rot",
+      "body": "rot"
+    },
+    "in-built rotate": {
+      "prefix": "#rotate",
+      "body": "rotate"
+    },
+    "in-built rotation": {
+      "prefix": "#rotation",
+      "body": "rotation"
+    },
+    "in-built route": {
+      "prefix": "#route",
+      "body": "route"
+    },
+    "in-built rvel": {
+      "prefix": "#rvel",
+      "body": "rvel"
+    },
+    "in-built rvelocity": {
+      "prefix": "#rvelocity",
+      "body": "rvelocity"
+    },
+    "in-built s": {
+      "prefix": "#s",
+      "body": "s"
+    },
+    "in-built sacc": {
+      "prefix": "#sacc",
+      "body": "sacc"
+    },
+    "in-built sacceleration": {
+      "prefix": "#sacceleration",
+      "body": "sacceleration"
+    },
+    "in-built sample": {
+      "prefix": "#sample",
+      "body": "sample"
+    },
+    "in-built samples": {
+      "prefix": "#samples",
+      "body": "samples"
+    },
+    "in-built satisfying": {
+      "prefix": "#satisfying",
+      "body": "satisfying"
+    },
+    "in-built save": {
+      "prefix": "#save",
+      "body": "save"
+    },
+    "Saveframedir": {
+      "prefix": "$Saveframedir",
+      "body": "Saveframedir"
+    },
+    "Saveframes": {
+      "prefix": "$Saveframes",
+      "body": "Saveframes"
+    },
+    "in-built scale": {
+      "prefix": "#scale",
+      "body": "scale"
+    },
+    "in-built scanned": {
+      "prefix": "#scanned",
+      "body": "scanned"
+    },
+    "in-built schedjob": {
+      "prefix": "#schedjob",
+      "body": "schedjob"
+    },
+    "in-built schedjobs": {
+      "prefix": "#schedjobs",
+      "body": "schedjobs"
+    },
+    "in-built schedule": {
+      "prefix": "#schedule",
+      "body": "schedule"
+    },
+    "in-built scl": {
+      "prefix": "#scl",
+      "body": "scl"
+    },
+    "in-built screen": {
+      "prefix": "#screen",
+      "body": "screen"
+    },
+    "in-built scrn": {
+      "prefix": "#scrn",
+      "body": "scrn"
+    },
+    "in-built search": {
+      "prefix": "#search",
+      "body": "search"
+    },
+    "Sec": {
+      "prefix": "$Sec",
+      "body": "Sec"
+    },
+    "in-built Second": {
+      "prefix": "#Second",
+      "body": "Second"
+    },
+    "in-built Seconds": {
+      "prefix": "#Seconds",
+      "body": "Seconds"
+    },
+    "in-built Secs": {
+      "prefix": "#Secs",
+      "body": "Secs"
+    },
+    "in-built section": {
+      "prefix": "#section",
+      "body": "section"
+    },
+    "in-built segment": {
+      "prefix": "#segment",
+      "body": "segment"
+    },
+    "in-built selection": {
+      "prefix": "#selection",
+      "body": "selection"
+    },
+    "in-built send": {
+      "prefix": "#send",
+      "body": "send"
+    },
+    "in-built sense": {
+      "prefix": "#sense",
+      "body": "sense"
+    },
+    "in-built sensed": {
+      "prefix": "#sensed",
+      "body": "sensed"
+    },
+    "in-built set": {
+      "prefix": "#set",
+      "body": "set"
+    },
+    "in-built setdown": {
+      "prefix": "#setdown",
+      "body": "setdown"
+    },
+    "in-built size": {
+      "prefix": "#size",
+      "body": "size"
+    },
+    "in-built slow": {
+      "prefix": "#slow",
+      "body": "slow"
+    },
+    "in-built snap": {
+      "prefix": "#snap",
+      "body": "snap"
+    },
+    "in-built snapfunction": {
+      "prefix": "#snapfunction",
+      "body": "snapfunction"
+    },
+    "in-built solid": {
+      "prefix": "#solid",
+      "body": "solid"
+    },
+    "in-built source": {
+      "prefix": "#source",
+      "body": "source"
+    },
+    "in-built space": {
+      "prefix": "#space",
+      "body": "space"
+    },
+    "Spec": {
+      "prefix": "$Spec",
+      "body": "Spec"
+    },
+    "in-built specification": {
+      "prefix": "#specification",
+      "body": "specification"
+    },
+    "in-built speed": {
+      "prefix": "#speed",
+      "body": "speed"
+    },
+    "in-built spur": {
+      "prefix": "#spur",
+      "body": "spur"
+    },
+    "in-built Standard": {
+      "prefix": "#Standard",
+      "body": "Standard"
+    },
+    "in-built start": {
+      "prefix": "#start",
+      "body": "start"
+    },
+    "in-built state": {
+      "prefix": "#state",
+      "body": "state"
+    },
+    "in-built station": {
+      "prefix": "#station",
+      "body": "station"
+    },
+    "in-built status": {
+      "prefix": "#status",
+      "body": "status"
+    },
+    "in-built stddev": {
+      "prefix": "#stddev",
+      "body": "stddev"
+    },
+    "in-built step": {
+      "prefix": "#step",
+      "body": "step"
+    },
+    "in-built stop": {
+      "prefix": "#stop",
+      "body": "stop"
+    },
+    "in-built stopped": {
+      "prefix": "#stopped",
+      "body": "stopped"
+    },
+    "in-built stream": {
+      "prefix": "#stream",
+      "body": "stream"
+    },
+    "in-built subobj": {
+      "prefix": "#subobj",
+      "body": "subobj"
+    },
+    "in-built subroutine": {
+      "prefix": "#subroutine",
+      "body": "subroutine"
+    },
+    "in-built substring": {
+      "prefix": "#substring",
+      "body": "substring"
+    },
+    "in-built suspend": {
+      "prefix": "#suspend",
+      "body": "suspend"
+    },
+    "in-built syncrate": {
+      "prefix": "#syncrate",
+      "body": "syncrate"
+    },
+    "in-built svel": {
+      "prefix": "#svel",
+      "body": "svel"
+    },
+    "in-built svelocity": {
+      "prefix": "#svelocity",
+      "body": "svelocity"
+    },
+    "in-built sys": {
+      "prefix": "#sys",
+      "body": "sys"
+    },
+    "in-built system": {
+      "prefix": "#system",
+      "body": "system"
+    },
+    "in-built t": {
+      "prefix": "#t",
+      "body": "t"
+    },
+    "in-built table": {
+      "prefix": "#table",
+      "body": "table"
+    },
+    "in-built tabulate": {
+      "prefix": "#tabulate",
+      "body": "tabulate"
+    },
+    "in-built tailpos": {
+      "prefix": "#tailpos",
+      "body": "tailpos"
+    },
+    "in-built tailvel": {
+      "prefix": "#tailvel",
+      "body": "tailvel"
+    },
+    "in-built take": {
+      "prefix": "#take",
+      "body": "take"
+    },
+    "in-built taken": {
+      "prefix": "#taken",
+      "body": "taken"
+    },
+    "in-built tank": {
+      "prefix": "#tank",
+      "body": "tank"
+    },
+    "in-built target": {
+      "prefix": "#target",
+      "body": "target"
+    },
+    "in-built task": {
+      "prefix": "#task",
+      "body": "task"
+    },
+    "in-built tcf": {
+      "prefix": "#tcf",
+      "body": "tcf"
+    },
+    "in-built temp": {
+      "prefix": "#temp",
+      "body": "temp"
+    },
+    "in-built Template": {
+      "prefix": "#Template",
+      "body": "Template"
+    },
+    "in-built temporary": {
+      "prefix": "#temporary",
+      "body": "temporary"
+    },
+    "in-built terminate": {
+      "prefix": "#terminate",
+      "body": "terminate"
+    },
+    "in-built territory": {
+      "prefix": "#territory",
+      "body": "territory"
+    },
+    "in-built text": {
+      "prefix": "#text",
+      "body": "text"
+    },
+    "in-built the": {
+      "prefix": "#the",
+      "body": "the"
+    },
+    "in-built then": {
+      "prefix": "#then",
+      "body": "then"
+    },
+    "in-built this": {
+      "prefix": "#this",
+      "body": "this"
+    },
+    "in-built time": {
+      "prefix": "#time",
+      "body": "time"
+    },
+    "in-built timeout": {
+      "prefix": "#timeout",
+      "body": "timeout"
+    },
+    "in-built tmpsub": {
+      "prefix": "#tmpsub",
+      "body": "tmpsub"
+    },
+    "in-built to": {
+      "prefix": "#to",
+      "body": "to"
+    },
+    "in-built tog": {
+      "prefix": "#tog",
+      "body": "tog"
+    },
+    "in-built toggle": {
+      "prefix": "#toggle",
+      "body": "toggle"
+    },
+    "in-built total": {
+      "prefix": "#total",
+      "body": "total"
+    },
+    "in-built traffic": {
+      "prefix": "#traffic",
+      "body": "traffic"
+    },
+    "in-built transfer": {
+      "prefix": "#transfer",
+      "body": "transfer"
+    },
+    "in-built translate": {
+      "prefix": "#translate",
+      "body": "translate"
+    },
+    "in-built transparency": {
+      "prefix": "#transparency",
+      "body": "transparency"
+    },
+    "in-built travel": {
+      "prefix": "#travel",
+      "body": "travel"
+    },
+    "in-built traveled": {
+      "prefix": "#traveled",
+      "body": "traveled"
+    },
+    "in-built triangular": {
+      "prefix": "#triangular",
+      "body": "triangular"
+    },
+    "in-built trigger": {
+      "prefix": "#trigger",
+      "body": "trigger"
+    },
+    "in-built trip": {
+      "prefix": "#trip",
+      "body": "trip"
+    },
+    "in-built trips": {
+      "prefix": "#trips",
+      "body": "trips"
+    },
+    "in-built True": {
+      "prefix": "#True",
+      "body": "True"
+    },
+    "in-built turn": {
+      "prefix": "#turn",
+      "body": "turn"
+    },
+    "in-built type": {
+      "prefix": "#type",
+      "body": "type"
+    },
+    "in-built u": {
+      "prefix": "#u",
+      "body": "u"
+    },
+    "in-built um": {
+      "prefix": "#um",
+      "body": "um"
+    },
+    "in-built Umeter": {
+      "prefix": "#Umeter",
+      "body": "Umeter"
+    },
+    "in-built Umeters": {
+      "prefix": "#Umeters",
+      "body": "Umeters"
+    },
+    "in-built Umetre": {
+      "prefix": "#Umetre",
+      "body": "Umetre"
+    },
+    "in-built Umetres": {
+      "prefix": "#Umetres",
+      "body": "Umetres"
+    },
+    "in-built undisplay": {
+      "prefix": "#undisplay",
+      "body": "undisplay"
+    },
+    "in-built uniform": {
+      "prefix": "#uniform",
+      "body": "uniform"
+    },
+    "in-built unit": {
+      "prefix": "#unit",
+      "body": "unit"
+    },
+    "in-built units": {
+      "prefix": "#units",
+      "body": "units"
+    },
+    "in-built until": {
+      "prefix": "#until",
+      "body": "until"
+    },
+    "in-built up": {
+      "prefix": "#up",
+      "body": "up"
+    },
+    "in-built us": {
+      "prefix": "#us",
+      "body": "us"
+    },
+    "in-built use": {
+      "prefix": "#use",
+      "body": "use"
+    },
+    "in-built Usec": {
+      "prefix": "#Usec",
+      "body": "Usec"
+    },
+    "in-built Usecond": {
+      "prefix": "#Usecond",
+      "body": "Usecond"
+    },
+    "in-built Useconds": {
+      "prefix": "#Useconds",
+      "body": "Useconds"
+    },
+    "in-built Usecs": {
+      "prefix": "#Usecs",
+      "body": "Usecs"
+    },
+    "in-built utilization": {
+      "prefix": "#utilization",
+      "body": "utilization"
+    },
+    "in-built val": {
+      "prefix": "#val",
+      "body": "val"
+    },
+    "in-built value": {
+      "prefix": "#value",
+      "body": "value"
+    },
+    "in-built variable": {
+      "prefix": "#variable",
+      "body": "variable"
+    },
+    "in-built vehicle": {
+      "prefix": "#vehicle",
+      "body": "vehicle"
+    },
+    "in-built vehicles": {
+      "prefix": "#vehicles",
+      "body": "vehicles"
+    },
+    "in-built vel": {
+      "prefix": "#vel",
+      "body": "vel"
+    },
+    "in-built velocity": {
+      "prefix": "#velocity",
+      "body": "velocity"
+    },
+    "in-built vertical": {
+      "prefix": "#vertical",
+      "body": "vertical"
+    },
+    "in-built view": {
+      "prefix": "#view",
+      "body": "view"
+    },
+    "in-built Vis": {
+      "prefix": "#Vis",
+      "body": "Vis"
+    },
+    "in-built Visible": {
+      "prefix": "#Visible",
+      "body": "Visible"
+    },
+    "in-built w": {
+      "prefix": "#w",
+      "body": "w"
+    },
+    "in-built wait": {
+      "prefix": "#wait",
+      "body": "wait"
+    },
+    "in-built waiting": {
+      "prefix": "#waiting",
+      "body": "waiting"
+    },
+    "in-built warning": {
+      "prefix": "#warning",
+      "body": "warning"
+    },
+    "in-built Week": {
+      "prefix": "#Week",
+      "body": "Week"
+    },
+    "in-built Weeks": {
+      "prefix": "#Weeks",
+      "body": "Weeks"
+    },
+    "in-built weibull": {
+      "prefix": "#weibull",
+      "body": "weibull"
+    },
+    "in-built while": {
+      "prefix": "#while",
+      "body": "while"
+    },
+    "in-built White": {
+      "prefix": "#White",
+      "body": "White"
+    },
+    "in-built whose": {
+      "prefix": "#whose",
+      "body": "whose"
+    },
+    "Width": {
+      "prefix": "$Width",
+      "body": "Width"
+    },
+    "in-built wind": {
+      "prefix": "#wind",
+      "body": "wind"
+    },
+    "in-built window": {
+      "prefix": "#window",
+      "body": "window"
+    },
+    "in-built wire": {
+      "prefix": "#wire",
+      "body": "wire"
+    },
+    "in-built wireframe": {
+      "prefix": "#wireframe",
+      "body": "wireframe"
+    },
+    "in-built with": {
+      "prefix": "#with",
+      "body": "with"
+    },
+    "in-built without": {
+      "prefix": "#without",
+      "body": "without"
+    },
+    "in-built Wk": {
+      "prefix": "#Wk",
+      "body": "Wk"
+    },
+    "in-built Wks": {
+      "prefix": "#Wks",
+      "body": "Wks"
+    },
+    "in-built work": {
+      "prefix": "#work",
+      "body": "work"
+    },
+    "in-built world": {
+      "prefix": "#world",
+      "body": "world"
+    },
+    "in-built writing": {
+      "prefix": "#writing",
+      "body": "writing"
+    },
+    "in-built x": {
+      "prefix": "#x",
+      "body": "x"
+    },
+    "in-built y": {
+      "prefix": "#y",
+      "body": "y"
+    },
+    "Yellow": {
+      "prefix": "$Yellow",
+      "body": "Yellow"
+    },
+    "in-built yes": {
+      "prefix": "#yes",
+      "body": "yes"
+    },
+    "in-built z": {
+      "prefix": "#z",
+      "body": "z"
+    }
+  }
+}

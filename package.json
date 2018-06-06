@@ -1,0 +1,35 @@
+{
+    "name": "automod",
+    "displayName": "AutoMod",
+    "description": "AutoMod langugage support for VS Code.",
+    "version": "0.0.1",
+    "publisher": "yulih",
+    "engines": {
+        "vscode": "^1.19.0"
+    },
+	"categories": [
+		"Languages",
+		"Snippets"
+    ],
+    "keywords": ["vscode","AutoMod","automod","cel","asy","amo"
+	],
+    "contributes": {
+        "languages": [{
+            "id": "automod",
+            "aliases": ["AutoMod", "automod"],
+            "extensions": [".asy",".amo",".cel",".m@",".m~",".m"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "automod",
+            "scopeName": "source.automod",
+            "path": "./syntaxes/automod.tmLanguage.json"
+        }],
+        "snippets": [
+			{
+				"language": "automod",
+				"path": "./snippets/automod.json"
+			}
+		]
+    }
+}

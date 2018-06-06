@@ -1,0 +1,1 @@
+add|break|bring up|call|cancel|choose|claim|clone|close|configure|continue|create|decrement|delete|dispatch|display|free|get|increment|insert|move|open|order|plot|preempt|print|read|release|remove|reserve|return|rotate|scale|schedule|send|set|tabulate|take down|terminate|translate|travel|undisplay|use|wait to be ordered|wait|die|for|into
