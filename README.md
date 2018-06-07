@@ -36,6 +36,6 @@ Initial release of AutoMod language support for VS Code
 
 ## Links
 
-* [~~AutoMod Integration tutorial~~ (deprecated)](https://code.visualstudio.com/)
+* [~~AutoMod Integration tutorial~~ (deprecated)](https://sites.google.com/view/automod-vscode/home)
 
 **Enjoy!**
