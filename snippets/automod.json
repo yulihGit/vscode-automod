@@ -2,7 +2,7 @@
   "source.automod": {
 
     "title_section_description_comment": {
-      "prefix": "Â§comment_title_section",
+      "prefix": "§comment_title_section",
       "body": [
           "/*****************************************************************************************************************",
           " // Descriptions:\t${2:todo}",
@@ -12,7 +12,7 @@
           "description": "Descriptions: 'Describe main concepts'\nParameters: 'Clarify ambigous parameters\nExample: 'input->output example'"
     },
     "line_block_comment": {
-      "prefix": "Â§comment_line_block",
+      "prefix": "§comment_line_block",
       "body": "/* $1 */",
       "description": "AutoMod block commenting"
     },
@@ -25,11 +25,11 @@
       "body": "// ToDo "
     },
     "print_to_message": {
-      "prefix": "Â§print \"\" to message",
+      "prefix": "§print \"\" to message",
       "body": "print \"${1:print_text}\" to message"    
     },
     "print_debugging": {
-      "prefix": "Â§debug_pausecontinue_or_togglestop",
+      "prefix": "§debug_pausecontinue_or_togglestop",
       "body": [   
           "if ${1:<condition = true>} then begin",
           " print ${1:<condition>} to message",
@@ -40,48 +40,48 @@
     },
 
     "command_amod_optimized_windowless": {
-      "prefix": "Â§command_optimized_windowless \"\"",
+      "prefix": "§command_optimized_windowless \"\"",
       "body": "amod -iOnr ${1:runtime_model_name} -w",
       "description": "Note: Folder directory should be where runtime model is located.\nTip: Have <model>.message and <model>.err files open on side"      
     },
     "command_amod_windowless": {
-      "prefix": "Â§command_windowless \"\"",
+      "prefix": "§command_windowless \"\"",
       "body": "amod -ir ${1:runtime_model_name} -w",
       "description": "Note: Folder directory should be where runtime model is located.\nTip: Have <model>.message and <model>.err files open on side"      
     },
     
     "attribute_integer_from_selection": {
-      "prefix": "Â§cai (create_attribue_integer_from_selection)",
+      "prefix": "§cai (create_attribue_integer_from_selection)",
       "body": "$TM_SELECTED_TEXT${1:ATT name $TM_SELECTED_TEXT 0 type Integer}"
     },
     "attribute_string_from_selection": {
-      "prefix": "Â§cas (create_attribute_string_from_selection)",
+      "prefix": "§cas (create_attribute_string_from_selection)",
       "body": "$TM_SELECTED_TEXT${1:ATT name $TM_SELECTED_TEXT 0 type String}"
     },
     "variable_integer_from_selection": {
-      "prefix": "Â§cvi (create_variable_integer_from_selection)",
+      "prefix": "§cvi (create_variable_integer_from_selection)",
       "body": "$TM_SELECTED_TEXT${1:VAR name $TM_SELECTED_TEXT 0 type Integer}"
     },
     "variable_string_from_selection": {
-      "prefix": "Â§cvs (create_variable_string_from_selection)",
+      "prefix": "§cvs (create_variable_string_from_selection)",
       "body": "$TM_SELECTED_TEXT${1:VAR name $TM_SELECTED_TEXT 0 type String}"
     },
     
 
     "declare_string": {
-      "prefix": "Â§declare_String",
+      "prefix": "§declare_String",
       "body": "VAR name VS_${1:<Name>} 0 type String"
     },
     "declare_integer": {
-      "prefix": "Â§declare_Integer",
+      "prefix": "§declare_Integer",
       "body": "VAR name VI_${1:<Name>} 0 type Integer"
     },
     "declare_function_integer": {
-      "prefix": "Â§declare_Function_Integer",
+      "prefix": "§declare_Function_Integer",
       "body": "FUNC name ${1:<F_Name>} type Integer PARAM name ${2:<ArgInt_Parameter>} type Integer"
     },
     "declare_procedure": {
-      "prefix": "Â§begin_procedure",
+      "prefix": "§begin_procedure",
       "body": [
           "PROC name ${1:<P_VerbNoun>} 0 traf Infinite ${2:nextproc die} ",
           "/*****************************************************************************************************************",
@@ -99,7 +99,7 @@
           "description": []
     },
     "declare_subroutine": {
-      "prefix": "Â§begin_subroutine",
+      "prefix": "§begin_subroutine",
       "body": [   
           "SUBRTN name ${1:<S_VerbNoun>}",
           "/*****************************************************************************************************************",
@@ -115,7 +115,7 @@
           "description": []
     },
     "declare_function": {
-      "prefix": "Â§begin_function",
+      "prefix": "§begin_function",
       "body": [   
           "FUNC name ${1:<F_VerbNoun>} type Integer PARAM name ${2:<ArgInt_Parameter>} type Integer",
           "/*****************************************************************************************************************",
@@ -132,7 +132,7 @@
             "Parameters: 'Clarify ambigous parameters\nExample: 'input->output example'\nnextproc die = optional?"]         
     },
     "declare_function_example": {
-      "prefix": "Â§begin_function_example",
+      "prefix": "§begin_function_example",
       "body": [   
           "FUNC name Fi_CalcTime type Integer PARAM name ArgReal_Time type Real",
           "/*****************************************************************************************************************",
@@ -165,7 +165,7 @@
           "description": ["Function example. Values filled"]         
     },
     "declare_procedure_example": {
-      "prefix": "Â§begin_procedure_example",
+      "prefix": "§begin_procedure_example",
       "body": [
               "PROC name P_LoadPallet 0 traf Infinite nextproc die ",
               "/*****************************************************************************************************************",
@@ -207,7 +207,7 @@
           "description": ["Procedure Example. Values filled. See also Subroutine examples"]         
     },
     "declare_subroutine_example": {
-      "prefix": "Â§begin_subroutine_example",
+      "prefix": "§begin_subroutine_example",
       "body": [   
               "SUBRTN name S_UseTruck",
               "/***********************************************************************",
@@ -249,7 +249,7 @@
     },
 
     "breakdown_example_triangular": {
-      "prefix": "Â§breakdown_triangular",
+      "prefix": "§breakdown_triangular",
       "body": [   
         "begin ${1:<P_break>} arriving procedure",
         " move into ${2:<Q_break>}",
@@ -265,7 +265,7 @@
       "description": "Comments:\n - L: min (lower) value\n - D: most likely value\n - U: max (upper) value"          
     },
     "breakdown_example_resource": {
-      "prefix": "Â§breakdown_resource",
+      "prefix": "§breakdown_resource",
       "body": [   
         "begin ${1:<P_breakdown>} arriving",
         " wait for ${2:<5>} min       \/\/ start in 5min",
@@ -281,7 +281,7 @@
     },
 
     "new_model":{
-      "prefix": "Â§new_model",
+      "prefix": "§new_model",
       "body": [   
             "VERSION 12.6.1.19",
             "SYSTYPE Process",
@@ -632,7 +632,7 @@
             "    end",
             "end",
             "",
-            "/* Todo skapoa en funktion som retunerar tid baserat pÂ§ ett vÂ§rde(real) och enhet(string)",
+            "/* Todo skapoa en funktion som retunerar tid baserat p§ ett v§rde(real) och enhet(string)",
             " if \"minuter\" ",
             "     then return realVariable min*/",
             "",
@@ -680,8 +680,8 @@
     },
 
 
-    "Â§while_single": {
-      "prefix": "Â§while_single",
+    "§while_single": {
+      "prefix": "§while_single",
       "body": [   
           "set i = 1",
           "while i < ${1:<n>} do begin",
@@ -690,8 +690,8 @@
           "end"],
       "description": "Descriptions: 'Single while loop'"          
     },
-    "Â§while_single_wait": {
-      "prefix": "Â§while_single_wait",
+    "§while_single_wait": {
+      "prefix": "§while_single_wait",
       "body": [   
           "set ii = 1",
           "while ii < ${1:<n>} do begin",
@@ -700,8 +700,8 @@
           "end"],
       "description": "Descriptions: 'Single while loop with waits involved'"          
     },
-    "Â§while_double": {
-      "prefix": "Â§while_double",
+    "§while_double": {
+      "prefix": "§while_double",
       "body": [   
           "set i = 1",
           "while i < ${1:<n>} do begin",
@@ -715,8 +715,8 @@
           "end"],
       "description": "'Example 2.'"          
     },
-    "Â§while_double_wait": {
-      "prefix": "Â§while_double_wait",
+    "§while_double_wait": {
+      "prefix": "§while_double_wait",
       "body": [   
           "set ii = 1",
           "while ii < ${1:<n>} do begin",

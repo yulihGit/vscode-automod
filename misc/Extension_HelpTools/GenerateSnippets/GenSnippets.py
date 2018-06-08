@@ -1,8 +1,8 @@
 # -- coding: cp1252 --
 import os
 
-path = absolute_path = os.path.dirname(os.path.abspath(__file__)) + '\\Input\\SnippetBody.arc'
-path2 = absolute_path = os.path.dirname(os.path.abspath(__file__)) + '\\Input\\SnippetBodyJson'
+path = os.path.dirname(os.path.abspath(__file__)) + '\\SnippetBody.asy'
+path2 = os.path.dirname(os.path.abspath(__file__)) + '\\SnippetBodyJson'
 outputFile = open(path2, "w") 
 
 with open(path) as inf:
