@@ -10,7 +10,7 @@ AutoMod language support for VS Code
 * AutoMod reserved keywords auto completion
 * Generator scripts (Snippets, keywords)
 
-\!\[feature X\]\(resources/readme/todo_comment_color_ex.png\)
+![ToDo](https://github.com/yulihGit/automod.vscode/blob/master/resources/images/readme/todo_comment_color_ex.png?raw=true)
 
 ## Contributing
 
