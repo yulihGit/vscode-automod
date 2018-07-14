@@ -1,6 +1,8 @@
 # AutoMod README
 
-AutoMod language support for VS Code
+AutoMod language support for VS Code.
+
+(Primary for internal use. Developed during master's thesis)
 
 ## Features
 * Syntax highlighting
@@ -41,7 +43,7 @@ Paste and configure generated json (SnippetBody_Output.txt) inside automod.json
 
 ## Release Notes
 
-### 1.0.0
+### 0.0.2
 
 Initial release of AutoMod language support for VS Code
 
