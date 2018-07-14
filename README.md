@@ -1,4 +1,4 @@
-# automod README
+# AutoMod README
 
 AutoMod language support for VS Code
 

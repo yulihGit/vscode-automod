@@ -1,8 +1,8 @@
 # -- coding: cp1252 --
 import os
 
-path = os.path.dirname(os.path.abspath(__file__)) + '\\SnippetBody.asy'
-path2 = os.path.dirname(os.path.abspath(__file__)) + '\\SnippetBodyJson'
+path = os.path.dirname(os.path.abspath(__file__)) + '\\SnippetBody_Input.asy'
+path2 = os.path.dirname(os.path.abspath(__file__)) + '\\SnippetBody_Output'
 outputFile = open(path2, "w") 
 
 with open(path) as inf:
