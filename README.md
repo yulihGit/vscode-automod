@@ -22,6 +22,10 @@ Auto-completion (AutoMod reserved keywords)
 
 ![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_keywords.PNG?raw=true "Title")
 
+Generate copy-paste ready snippets from AutoMod code. (Python script)
+
+![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_keywords.PNG?raw=true "Title")
+
 ## Contributing
 
 1. Fork it!
