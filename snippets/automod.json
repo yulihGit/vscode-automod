@@ -40,31 +40,35 @@
     },
 
     "command_amod_optimized_windowless": {
-      "prefix": "§command_optimized_windowless \"\"",
+      "prefix": "§amod_optimized_windowless \"\"",
       "body": "amod -iOnr ${1:runtime_model_name} -w",
       "description": "Note: Folder directory should be where runtime model is located.\nTip: Have <model>.message and <model>.err files open on side"      
     },
     "command_amod_windowless": {
-      "prefix": "§command_windowless \"\"",
+      "prefix": "§amod_windowless \"\"",
       "body": "amod -ir ${1:runtime_model_name} -w",
       "description": "Note: Folder directory should be where runtime model is located.\nTip: Have <model>.message and <model>.err files open on side"      
     },
     
     "attribute_integer_from_selection": {
-      "prefix": "§cai (create_attribue_integer_from_selection)",
-      "body": "$TM_SELECTED_TEXT${1:ATT name $TM_SELECTED_TEXT 0 type Integer}"
+      "prefix": "§crai (create_attribue_integer_from_selection)",
+      "body": "$TM_SELECTED_TEXT${1:ATT name $TM_SELECTED_TEXT 0 type Integer}",
+      "description": "Create integer attribute from selection"
     },
     "attribute_string_from_selection": {
-      "prefix": "§cas (create_attribute_string_from_selection)",
-      "body": "$TM_SELECTED_TEXT${1:ATT name $TM_SELECTED_TEXT 0 type String}"
+      "prefix": "§cras (create_attribute_string_from_selection)",
+      "body": "$TM_SELECTED_TEXT${1:ATT name $TM_SELECTED_TEXT 0 type String}",
+      "description": "Create string attribute from selection"
     },
     "variable_integer_from_selection": {
-      "prefix": "§cvi (create_variable_integer_from_selection)",
-      "body": "$TM_SELECTED_TEXT${1:VAR name $TM_SELECTED_TEXT 0 type Integer}"
+      "prefix": "§crvi (create_variable_integer_from_selection)",
+      "body": "$TM_SELECTED_TEXT${1:VAR name $TM_SELECTED_TEXT 0 type Integer}",
+      "description": "Create integer variable from selection"
     },
     "variable_string_from_selection": {
-      "prefix": "§cvs (create_variable_string_from_selection)",
-      "body": "$TM_SELECTED_TEXT${1:VAR name $TM_SELECTED_TEXT 0 type String}"
+      "prefix": "§crvs (create_variable_string_from_selection)",
+      "body": "$TM_SELECTED_TEXT${1:VAR name $TM_SELECTED_TEXT 0 type String}",
+      "description": "Create string variable from selection"
     },
     
 
@@ -277,11 +281,11 @@
         "  wait for ${6:<7.75>} hr    \/\/ MTTF",
         " end",
         "end"],
-      "description": []          
+      "description": "Breakdown example"          
     },
 
     "new_model":{
-      "prefix": "§new_model",
+      "prefix": "§new_model_example",
       "body": [   
             "VERSION 12.6.1.19",
             "SYSTYPE Process",

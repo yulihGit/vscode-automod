@@ -3,14 +3,24 @@
 AutoMod language support for VS Code
 
 ## Features
-* Color Syntax
-* Comment blocks
+* Syntax highlighting
 * Snippets
-* CodeMap (mapper)
-* AutoMod reserved keywords auto completion
+* Auto-completion (AutoMod reserved keywords)
 * Generator scripts (Snippets, keywords)
+* Comment blocks
+* CodeMap (mapper)
 
-![ToDo](https://github.com/yulihGit/vscode-automod/tree/master/resources/images/readme/vsce_automod_syntax.PNG?raw=true)
+Syntax highlight.
+
+![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_syntax.PNG?raw=true "Title")
+
+Snippets (procedure, subroutine, functions, methods, other examples).
+
+![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_snippets.PNG?raw=true "Title")
+
+Auto-completion (AutoMod reserved keywords)
+
+![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_keywords.PNG?raw=true "Title")
 
 ## Contributing
 
