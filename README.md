@@ -22,8 +22,9 @@ Auto-completion (AutoMod reserved keywords)
 
 ![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_keywords.PNG?raw=true "Title")
 
-Generate copy-paste ready snippets from AutoMod code. (Python script)
-
+Generate paste-ready snippets from plain AutoMod code (SnippetBody_Input.asy). (Python script)
+Paste and configure generated json (SnippetBody_Output.txt) inside automod.json
+![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_generate2.PNG?raw=true "Title")
 ![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_generate.PNG?raw=true "Title")
 
 ## Contributing
