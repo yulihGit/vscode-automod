@@ -12,15 +12,15 @@ AutoMod language support for VS Code.
 * Generator scripts (Snippets, keywords)
 * CodeMap (outliner/mapper)
 
-Syntax highlight.
+***Syntax highlight.**
 
 ![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_syntax.PNG?raw=true "Title")
 
-Snippets (procedure, subroutine, functions, methods, other examples).
+**Snippets** (procedure, subroutine, functions, methods, other examples).
 
 ![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_snippets.PNG?raw=true "Title")
 
-Auto-completion (AutoMod reserved keywords)
+**Auto-completion** (AutoMod reserved keywords)
 
 ![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_keywords.PNG?raw=true "Title")
 
@@ -33,7 +33,7 @@ Requires installation of [Python](https://www.python.org/) and [Code Runner](htt
 
 ![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_snippet_generate.gif?raw=true "Title")
 
-CodeMap for AutoMod. Requires installation of [CodeMap](https://marketplace.visualstudio.com/items?itemName=oleg-shilo.codemap) extension.
+**CodeMap for AutoMod**. Requires installation of [CodeMap](https://marketplace.visualstudio.com/items?itemName=oleg-shilo.codemap) extension.
 
 ![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_codemap.gif?raw=true "Title")
 
@@ -56,7 +56,7 @@ Initial release of AutoMod language support for VS Code
 ### 0.0.2
 Clean up
 ### 0.0.3
-Added .gif for snippet generation in readme
+Added .gif's for readme
 
 ## Credits
 * [vscode-docs on GitHub](https://code.visualstudio.com/docs)
