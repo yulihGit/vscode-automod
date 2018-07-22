@@ -2,7 +2,7 @@
 
 AutoMod language support for VS Code.
 
-(Primary for internal use. Developed during master's thesis)
+(Primary for internal use. Developed during master's thesis as a [side project (deprecated)](https://sites.google.com/view/automod-vscode/home))
 
 ## Features
 * Comment blocks
