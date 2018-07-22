@@ -5,12 +5,12 @@ AutoMod language support for VS Code.
 (Primary for internal use. Developed during master's thesis)
 
 ## Features
+* Comment blocks
 * Syntax highlighting
 * Snippets
 * Auto-completion (AutoMod reserved keywords)
 * Generator scripts (Snippets, keywords)
-* Comment blocks
-* CodeMap (mapper)
+* CodeMap (outliner/mapper)
 
 Syntax highlight.
 
@@ -33,6 +33,9 @@ Requires installation of [Python](https://www.python.org/) and [Code Runner](htt
 
 ![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_snippet_generate.gif?raw=true "Title")
 
+CodeMap for AutoMod. Requires installation of [CodeMap](https://marketplace.visualstudio.com/items?itemName=oleg-shilo.codemap) extension.
+
+![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_codemap.gif?raw=true "Title")
 
 ## Contributing
 
