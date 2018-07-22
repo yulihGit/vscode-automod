@@ -23,7 +23,7 @@
         "type": "git",
         "url": "https://github.com/yulihGit/vscode-automod.git"
     },
-    "icon": "https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_icon.bmp?raw=true",
+    "icon": "resources/images/vsce_automod_icon.png",
     "contributes": {
         "languages": [{
             "id": "automod",
