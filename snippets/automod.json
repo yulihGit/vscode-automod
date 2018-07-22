@@ -1,17 +1,7 @@
 {
   "source.automod": {
 
-    "title_section_description_comment": {
-      "prefix": "§comment_title_section",
-      "body": [
-          "/*****************************************************************************************************************",
-          " // Descriptions:\t${2:todo}",
-          " // Parameters:\t\t${3:todo}",
-          " // Example:\t\t${4:todo}",
-          " *****************************************************************************************************************/"],
-          "description": "Descriptions: 'Describe main concepts'\nParameters: 'Clarify ambigous parameters\nExample: 'input->output example'"
-    },
-    "line_block_comment": {
+    "block_comment_line": {
       "prefix": "§comment_line_block",
       "body": "/* $1 */",
       "description": "AutoMod block commenting"
@@ -51,26 +41,25 @@
     },
     
     "attribute_integer_from_selection": {
-      "prefix": "§crai (create_attribue_integer_from_selection)",
-      "body": "$TM_SELECTED_TEXT${1:ATT name $TM_SELECTED_TEXT 0 type Integer}",
+      "prefix": "§crai",
+      "body": "$TM_SELECTED_TEXT ${1:ATT name $TM_SELECTED_TEXT 0 type Integer}",
       "description": "Create integer attribute from selection"
     },
     "attribute_string_from_selection": {
-      "prefix": "§cras (create_attribute_string_from_selection)",
-      "body": "$TM_SELECTED_TEXT${1:ATT name $TM_SELECTED_TEXT 0 type String}",
+      "prefix": "§cras",
+      "body": "$TM_SELECTED_TEXT ${1:ATT name $TM_SELECTED_TEXT 0 type String}",
       "description": "Create string attribute from selection"
     },
     "variable_integer_from_selection": {
-      "prefix": "§crvi (create_variable_integer_from_selection)",
-      "body": "$TM_SELECTED_TEXT${1:VAR name $TM_SELECTED_TEXT 0 type Integer}",
+      "prefix": "§crvi",
+      "body": "$TM_SELECTED_TEXT ${1:VAR name $TM_SELECTED_TEXT 0 type Integer}",
       "description": "Create integer variable from selection"
     },
     "variable_string_from_selection": {
-      "prefix": "§crvs (create_variable_string_from_selection)",
-      "body": "$TM_SELECTED_TEXT${1:VAR name $TM_SELECTED_TEXT 0 type String}",
+      "prefix": "§crvs",
+      "body": "$TM_SELECTED_TEXT ${1:VAR name $TM_SELECTED_TEXT 0 type String}",
       "description": "Create string variable from selection"
     },
-    
 
     "declare_string": {
       "prefix": "§declare_String",
@@ -734,11 +723,27 @@
           "end"],
       "description": "Descriptions: 'Double while loop with waits involved'"         
     },
-
-
-
-
-
+    "§for_each_short": {
+      "prefix": "§for_each_short",
+      "body": [   
+        "for each A_load in V_OLList do",
+        "\tprint A_load \"Is still on the list.\" to message"
+      ],
+      "description": "Descriptions: 'For each (short) template'"         
+    },
+     "§for_each": {
+      "prefix": "§for_each",
+      "body": [
+        "for each V_load in V_loadlist do begin",
+        "    if V_load A_dest = V_loc then begin",
+        "        order V_load from OL_loadlist to continue",
+        "        break",
+        "    end",
+        "end"
+      ],
+      "description": "Description 'For each template'"
+     },
+     
 
 
     "in-built a": {

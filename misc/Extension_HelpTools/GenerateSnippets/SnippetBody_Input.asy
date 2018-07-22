@@ -1,17 +1,6 @@
-VERSION 12.6.1.19
-SYSTYPE Process
-UNITS Feet Seconds
-FLAGS
-	System Inherit
-	Text Inherit
-	Resources Inherit
-	Resource Names Inherit
-	Queues Inherit
-	Queue Names Inherit
-	Queue Amounts Inherit
-	Blocks Inherit
-	Block Names Inherit
-	Labels Inherit
-
-
-	
+for each V_load in V_loadlist do begin
+    if V_load A_dest = V_loc then begin
+        order V_load from OL_loadlist to continue
+        break
+    end
+end

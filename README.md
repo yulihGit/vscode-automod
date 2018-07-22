@@ -48,9 +48,12 @@ Simple script written in Python to generate paste-ready automod code snippets
 
 ## Release Notes
 
-### 0.0.2
-
+### 0.0.1
 Initial release of AutoMod language support for VS Code
+### 0.0.2
+Clean up
+### 0.0.3
+New snippets and .gif for snippet generation in readme
 
 ## Credits
 * [vscode-docs on GitHub](https://code.visualstudio.com/docs)
