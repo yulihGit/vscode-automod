@@ -24,15 +24,15 @@ Auto-completion (AutoMod reserved keywords)
 
 ![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_keywords.PNG?raw=true "Title")
 
-Generate paste-ready snippets from plain AutoMod code (SnippetBody_Input.asy).
+Generate paste-ready snippets from plain AutoMod code. Paste and configure generated .json inside snippet management file.
 
-Paste and configure generated json (SnippetBody_Output.txt) inside automod.json
+**SnippetBody_Input.asy** -> **python script** -> **SnippetBody_Output.json** -> paste & configure in **automod.json**
 
-![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_generate2.png?raw=true "Title")
+Requires installation of [Python](https://www.python.org/) and [Code Runner](https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner
+) extension.
 
-Simple script written in Python to generate paste-ready automod code snippets
+![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_snippet_generate.gif?raw=true "Title")
 
-![Alt text](https://github.com/yulihGit/vscode-automod/blob/master/resources/images/readme/vsce_automod_generate.PNG?raw=true "Title")
 
 ## Contributing
 
@@ -53,7 +53,7 @@ Initial release of AutoMod language support for VS Code
 ### 0.0.2
 Clean up
 ### 0.0.3
-New snippets and .gif for snippet generation in readme
+Added .gif for snippet generation in readme
 
 ## Credits
 * [vscode-docs on GitHub](https://code.visualstudio.com/docs)
